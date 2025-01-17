@@ -1,76 +1,44 @@
-Relatório de Análise de Desempenho - Temporada 2020-25
+Relatório de Análise de Desempenho - Temporada 2024-25
 
-Este relatório analisa o desempenho de três jogadores durante a temporada:
+Este relatório analisa o desempenho do time Brooklyn Nets e de três jogadores específicos:
 - Cam Thomas
 - Dennis Schroder
 - Cameron Johnson
 
-Os dados coletados incluem informações sobre pontuação (PTS), rebotes (REB), assistências (AST) e impacto no placar (PLUS_MINUS). Além disso, foram feitas predições baseadas nesses dados para entender o desempenho futuro dos jogadores e as chances de vitória ou derrota do time.
+Os dados coletados incluem informações sobre pontuação (PTS), rebotes (REB), assistências (AST) e impacto no placar (PLUS_MINUS). Além disso, foram feitas comparações com outros times da NBA e predições para entender o desempenho futuro dos jogadores e do time.
 
 
 **Coletando dados dos jogadores...**
 
-Os dados brutos coletados contêm informações sobre o desempenho de cada jogador em diversos jogos.
+
+**Coletando dados do time Brooklyn Nets...**
+
+O Brooklyn Nets teve uma média de pontos de 106.90 por jogo nesta temporada.
 
 
-**Limpando dados...**
+**Comparação com outros times da NBA...**
 
-Após a limpeza, os dados foram organizados para incluir apenas as informações mais importantes: pontuação (PTS), rebotes (REB), assistências (AST) e impacto no placar (PLUS_MINUS).
+O Brooklyn Nets está na posição 52 entre os times em média de pontos por jogo.
+
+Um gráfico foi gerado para comparar a média de pontos do Brooklyn Nets com os outros times da NBA.
 
 
-**Estatísticas por jogador:**
+**Estatísticas e Predições dos Jogadores:**
 
 
 Jogador: Cam Thomas
-  - Pontos máximos em um jogo: 13
-  - Média de rebotes por jogo: 1.91
-  - Assistências máximas em um jogo: 5
-  - Maior impacto no placar (PLUS_MINUS): 32
+  - Pontos máximos em um jogo: nan
+  - Média de rebotes por jogo: nan
+  - Assistências máximas em um jogo: nan
 
 
 Jogador: Dennis Schroder
-  - Pontos máximos em um jogo: 26
-  - Média de rebotes por jogo: 3.38
-  - Assistências máximas em um jogo: 10
-  - Maior impacto no placar (PLUS_MINUS): 22
+  - Pontos máximos em um jogo: nan
+  - Média de rebotes por jogo: nan
+  - Assistências máximas em um jogo: nan
 
 
 Jogador: Cameron Johnson
-  - Pontos máximos em um jogo: 36
-  - Média de rebotes por jogo: 4.90
-  - Assistências máximas em um jogo: 11
-  - Maior impacto no placar (PLUS_MINUS): 36
-
-
-**Gráficos de Pontuação:**
-Um gráfico foi gerado para mostrar como cada jogador pontuou em diferentes jogos. Isso ajuda a visualizar a consistência e o impacto de cada jogador na temporada.
-
-
-**Predição de Pontuação (Regressão Linear):**
-
-[Regressão Linear] Prevendo Pontos por Jogo:
-Erro Quadrático Médio (MSE): 48.16
-Coeficientes (Impacto das variáveis): [1.34423409 1.58474165 0.01833298]
-Intercepto: 3.82
-Previsão de pontos para o exemplo [[ 5  7 10]]: 21.82
-Essa análise ajuda a prever a pontuação futura de um jogador com base em suas estatísticas de rebotes, assistências e impacto no jogo.
-
-
-**Predição de Vitória ou Derrota (Regressão Logística):**
-
-Uma análise foi realizada para prever a probabilidade de vitória ou derrota do time com base nas estatísticas de jogo (pontos, rebotes e assistências).
-
-[Regressão Logística] Prevendo Vitória ou Derrota:
-Acurácia do Modelo: 0.42
-Relatório de Classificação:
-              precision    recall  f1-score   support
-
-           0       0.50      0.43      0.46        21
-           1       0.33      0.40      0.36        15
-
-    accuracy                           0.42        36
-   macro avg       0.42      0.41      0.41        36
-weighted avg       0.43      0.42      0.42        36
-
-Previsão de vitória para o exemplo [[120  50  25]]: Vitória
-Probabilidades (Derrota/Vitória): [[0.03276061 0.96723939]]
+  - Pontos máximos em um jogo: 33
+  - Média de rebotes por jogo: 5.56
+  - Assistências máximas em um jogo: 9

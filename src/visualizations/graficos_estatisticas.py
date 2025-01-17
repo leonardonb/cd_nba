@@ -134,6 +134,37 @@ def criar_grafico_pontos_jogadores(data, jogadores, id_para_nome):
     plt.show()  # Exibir o gráfico interativamente
     plt.close('all')  # Fechar o gráfico após uso
 
+def criar_grafico_comparativo_times(media_pontos_times, nets_id):
+    """
+    Cria um gráfico comparativo entre o Brooklyn Nets e outros times.
 
+    Args:
+        media_pontos_times (pd.Series): Média de pontos por jogo de cada time.
+        nets_id (int): ID do Brooklyn Nets.
+    """
+    # Criar pasta para salvar gráficos
+    os.makedirs('./reports/graficos/', exist_ok=True)
 
+    # Transformar IDs dos times em categorias
+    media_pontos_times = media_pontos_times.sort_values(ascending=False)
+    times = media_pontos_times.index.astype(str)  # Convertendo IDs para string para melhor visualização
+    valores = media_pontos_times.values
 
+    # Configuração do gráfico
+    plt.figure(figsize=(10, 6))
+    plt.bar(times, valores, label='Média de Pontos por Time', alpha=0.7)
+
+    # Destacar o Brooklyn Nets
+    if nets_id in media_pontos_times.index:
+        nets_media = media_pontos_times.loc[nets_id]
+        plt.bar(str(nets_id), nets_media, color='red', label='Brooklyn Nets')
+
+    plt.title("Comparação da Média de Pontos entre Times")
+    plt.xlabel("Times (ID)")
+    plt.ylabel("Média de Pontos por Jogo")
+    plt.xticks(rotation=90)  # Rotacionar os rótulos do eixo x para melhor visualização
+    plt.legend()
+
+    # Salvar e exibir o gráfico
+    plt.savefig('./reports/graficos/comparacao_times.png')
+    plt.show()
