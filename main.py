@@ -1,17 +1,23 @@
 # Importar funções de outros RFs
+import relatorio
+
 from src.rf.rf1 import listar_times_conferencia
 from src.rf.rf2 import apresentar_classificacao_atual
 from src.rf.rf3 import calcular_vitorias_derrotas_por_temporada
 from src.rf.rf4 import calcular_totais_do_time
 from src.rf.rf5 import apresentar_dados_divididos
 from src.rf.rf6 import apresentar_performance_defensiva
-
+from src.rf.rf7 import apresentar_jogos_do_time
+from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
+from src.data.coleta_dados import coletar_dados_time
 
 import pandas as pd
 import os
+import pdfkit
 
 # Configurações do projeto
 team_id = 1610612751  # ID do Brooklyn Nets
+team_abbr = "BRK"  # Abreviação do Brooklyn Nets
 seasons = ["2023-24", "2024-25"]
 output_dir = "reports/arquivos_csv"
 html_dir = "reports/graficos_html"
@@ -57,5 +63,19 @@ apresentar_performance_defensiva(
     html_dir="reports/graficos_html",
     img_dir="reports/imagens"
 )
+
+# RF7: Apresentar jogos do Time
+print("Executando RF7: Apresentar jogos do time...")
+
+# Diretório base para saída
+base_output_dir = "reports"
+
+# Executar o RF7 e salvar os resultados
+dados_nets = apresentar_jogos_do_time(team_abbr, seasons, base_output_dir)
+
+# Exibir as primeiras linhas do DataFrame processado
+print("Dados do RF7 processados:")
+print(dados_nets.head())
+
 
 print("Processamento concluído.")
