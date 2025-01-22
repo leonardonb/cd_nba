@@ -1,11 +1,11 @@
-Relatório de Análise de Desempenho - Temporada 2024-25
+Relatï¿½rio de Anï¿½lise de Desempenho - Temporada 2024-25
 
-Este relatório analisa o desempenho do time Brooklyn Nets e de três jogadores específicos:
+Este relatï¿½rio analisa o desempenho do time Brooklyn Nets e de trï¿½s jogadores especï¿½ficos:
 - Cam Thomas
-- Dennis Schroder
 - Cameron Johnson
+- D'Angelo Russel
 
-Os dados coletados incluem informações sobre pontuação (PTS), rebotes (REB), assistências (AST) e impacto no placar (PLUS_MINUS). Além disso, foram feitas comparações com outros times da NBA e predições para entender o desempenho futuro dos jogadores e do time.
+Os dados coletados incluem informaï¿½ï¿½es sobre pontuaï¿½ï¿½o (PTS), rebotes (REB), assistï¿½ncias (AST) e impacto no placar (PLUS_MINUS). Alï¿½m disso, foram feitas comparaï¿½ï¿½es com outros times da NBA e prediï¿½ï¿½es para entender o desempenho futuro dos jogadores e do time.
 
 
 **Coletando dados dos jogadores...**
@@ -13,32 +13,32 @@ Os dados coletados incluem informações sobre pontuação (PTS), rebotes (REB), ass
 
 **Coletando dados do time Brooklyn Nets...**
 
-O Brooklyn Nets teve uma média de pontos de 106.90 por jogo nesta temporada.
+O Brooklyn Nets teve uma mï¿½dia de pontos de 106.90 por jogo nesta temporada.
 
 
-**Comparação com outros times da NBA...**
+**Comparaï¿½ï¿½o com outros times da NBA...**
 
-O Brooklyn Nets está na posição 52 entre os times em média de pontos por jogo.
+O Brooklyn Nets estï¿½ na posiï¿½ï¿½o 52 entre os times em mï¿½dia de pontos por jogo.
 
-Um gráfico foi gerado para comparar a média de pontos do Brooklyn Nets com os outros times da NBA.
+Um grï¿½fico foi gerado para comparar a mï¿½dia de pontos do Brooklyn Nets com os outros times da NBA.
 
 
-**Estatísticas e Predições dos Jogadores:**
+**Estatï¿½sticas e Prediï¿½ï¿½es dos Jogadores:**
 
 
 Jogador: Cam Thomas
-  - Pontos máximos em um jogo: nan
-  - Média de rebotes por jogo: nan
-  - Assistências máximas em um jogo: nan
+  - Pontos mï¿½ximos em um jogo: nan
+  - Mï¿½dia de rebotes por jogo: nan
+  - Assistï¿½ncias mï¿½ximas em um jogo: nan
 
 
 Jogador: Dennis Schroder
-  - Pontos máximos em um jogo: nan
-  - Média de rebotes por jogo: nan
-  - Assistências máximas em um jogo: nan
+  - Pontos mï¿½ximos em um jogo: nan
+  - Mï¿½dia de rebotes por jogo: nan
+  - Assistï¿½ncias mï¿½ximas em um jogo: nan
 
 
 Jogador: Cameron Johnson
-  - Pontos máximos em um jogo: 33
-  - Média de rebotes por jogo: 5.56
-  - Assistências máximas em um jogo: 9
+  - Pontos mï¿½ximos em um jogo: 33
+  - Mï¿½dia de rebotes por jogo: 5.56
+  - Assistï¿½ncias mï¿½ximas em um jogo: 9

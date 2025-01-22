@@ -1,5 +1,5 @@
 # Importar funções de outros RFs
-import relatorio
+# import relatorio
 
 from src.rf.rf1 import listar_times_conferencia
 from src.rf.rf2 import apresentar_classificacao_atual
@@ -8,6 +8,7 @@ from src.rf.rf4 import calcular_totais_do_time
 from src.rf.rf5 import apresentar_dados_divididos
 from src.rf.rf6 import apresentar_performance_defensiva
 from src.rf.rf7 import apresentar_jogos_do_time
+from src.rf.parte2_rf1 import apresentar_dados_jogadores
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -76,6 +77,11 @@ dados_nets = apresentar_jogos_do_time(team_abbr, seasons, base_output_dir)
 # Exibir as primeiras linhas do DataFrame processado
 print("Dados do RF7 processados:")
 print(dados_nets.head())
+
+# Parte 2, RF1: Apresentar os dados dos Jogadores
+print("Executando P2-RF1: Apresentar dados dos jogadores...")
+player_names = ["Cam Thomas", "Cameron Johnson", "D'Angelo Russell"]
+apresentar_dados_jogadores(player_names, output_dir, html_dir, img_dir)
 
 
 print("Processamento concluído.")
