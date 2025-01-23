@@ -9,6 +9,7 @@ from src.rf.rf5 import apresentar_dados_divididos
 from src.rf.rf6 import apresentar_performance_defensiva
 from src.rf.rf7 import apresentar_jogos_do_time
 from src.rf.parte2_rf1 import apresentar_dados_jogadores
+from src.rf.parte2_rf2 import apresentar_dados_partidas_time_por_id
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -82,6 +83,10 @@ print(dados_nets.head())
 print("Executando P2-RF1: Apresentar dados dos jogadores...")
 player_names = ["Cam Thomas", "Cameron Johnson", "D'Angelo Russell"]
 apresentar_dados_jogadores(player_names, output_dir, html_dir, img_dir)
+
+# Parte 2, RF2: Apresentar os dados de cada jogador do time
+print("Executando P2-RF2: Apresentar dados de cada jogador do time...")
+apresentar_dados_partidas_time_por_id(team_id, output_dir="reports/arquivos_csv/parte2-rf2", html_dir="reports/graficos_html/parte2-rf2", img_dir="reports/imagens/parte2-rf2")
 
 
 print("Processamento concluído.")

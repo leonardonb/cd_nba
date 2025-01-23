@@ -119,7 +119,7 @@ def apresentar_dados_jogadores(player_names, output_dir, html_dir, img_dir):
     img_path = os.path.join(img_dir, "p2_rft1_dados_jogadores.jpg")
     salvar_tabela_como_imagem(df_players, img_path, "Dados dos Jogadores")
 
-    print('Processamento do P2-RF1 concluído.')
+    print('Processamento da Parte2-RF1 concluído.')
     return df_players
 
 
