@@ -11,6 +11,9 @@ def fetch_player_game_data_home_away(player_id):
     Args:
         player_id (int): ID do jogador na NBA API.
 
+    Return:
+        pd.DataFrame: DataFrame contendo os dados dos jogadores.
+
     """
     try:
         player_log = playergamelog.PlayerGameLog(

@@ -68,6 +68,15 @@ def fetch_player_game_data(player_id):
 
 
 def apresentar_dados_partidas_time_por_id(team_id, output_dir, html_dir, img_dir):
+    """
+    Apresenta os dados para cada jogador do time contra um time adversário.
+
+    Args:
+        team_id (int): ID do time para a nba_api.
+        output_dir (str): Diretório para salvar arquivos CSV.
+        html_dir (str): Diretório para salvar arquivos HTML.
+        img_dir (str): Diretório para salvar imagens.
+    """
     players = fetch_team_players_by_id(team_id)
 
     if not players:
@@ -115,6 +124,14 @@ def apresentar_dados_partidas_time_por_id(team_id, output_dir, html_dir, img_dir
 
 
 def salvar_tabela_como_imagem(df, img_path, title):
+    """
+    Salva uma tabela como imagem.
+
+    Args:
+        df (pd.DataFrame): DataFrame contendo os dados a serem salvos.
+        img_path (str): Caminho para salvar a imagem.
+        title (str): Título da tabela.
+    """
     if df.empty:
         print("DataFrame vazio. Não é possível salvar como imagem.")
         return

@@ -1,18 +1,19 @@
 # Importar funções de outros RFs
 # import relatorio
 
-from src.rf.parte1_rf1 import listar_times_conferencia
-from src.rf.parte1_rf2 import apresentar_classificacao_atual
-from src.rf.parte1_rf3 import calcular_vitorias_derrotas_por_temporada
-from src.rf.parte1_rf4 import calcular_totais_do_time
-from src.rf.parte1_rf5 import apresentar_dados_divididos
-from src.rf.parte1_rf6 import apresentar_performance_defensiva
-from src.rf.parte1_rf7 import apresentar_jogos_do_time
-from src.rf.parte1_rf8 import rf_graficos_desempenho_brooklyn_nets
-from src.rf.parte2_rf1 import apresentar_dados_jogadores
-from src.rf.parte2_rf2 import apresentar_dados_partidas_time_por_id
-from src.rf.parte2_rf3 import apresentar_dados_partidas_contra_time
-from src.rf.parte2_rf4 import apresentar_dados_jogos_casa_fora
+from src.rf.parte1.parte1_rf1 import listar_times_conferencia
+from src.rf.parte1.parte1_rf2 import apresentar_classificacao_atual
+from src.rf.parte1.parte1_rf3 import calcular_vitorias_derrotas_por_temporada
+from src.rf.parte1.parte1_rf4 import calcular_totais_do_time
+from src.rf.parte1.parte1_rf5 import apresentar_dados_divididos
+from src.rf.parte1.parte1_rf6 import apresentar_performance_defensiva
+from src.rf.parte1.parte1_rf7 import apresentar_jogos_do_time
+from src.rf.parte1.parte1_rf8 import rf_graficos_desempenho_brooklyn_nets
+from src.rf.parte2.parte2_rf1 import apresentar_dados_jogadores
+from src.rf.parte2.parte2_rf2 import apresentar_dados_partidas_time_por_id
+from src.rf.parte2.parte2_rf3 import apresentar_dados_partidas_contra_time
+from src.rf.parte2.parte2_rf4 import apresentar_dados_jogos_casa_fora
+from src.rf.parte2.parte2_rf5 import calcular_e_apresentar_medias
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -32,6 +33,8 @@ img_dir = "reports/imagens"
 os.makedirs(output_dir, exist_ok=True)
 os.makedirs(html_dir, exist_ok=True)
 os.makedirs(img_dir, exist_ok=True)
+
+player_names = ["Cam Thomas", "Cameron Johnson", "D'Angelo Russell"]
 
 # Parte 01 RF1: Listar times por conferência
 print("Executando RF1: Listar times por conferência...")
@@ -96,29 +99,54 @@ print("RF8 concluído: Gráficos gerados com sucesso.")
 
 # Parte 2, RF1: Apresentar os dados dos Jogadores
 print("Executando P2-RF1: Apresentar dados dos jogadores...")
-player_names = ["Cam Thomas", "Cameron Johnson", "D'Angelo Russell"]
-apresentar_dados_jogadores(player_names, output_dir, html_dir, img_dir)
+apresentar_dados_jogadores(
+    player_names, 
+    output_dir="reports/arquivos_csv/parte2/parte2-rf1",
+    html_dir="reports/html/parte2/parte2-rf1",
+    img_dir="reports/imagens/parte2/parte2-rf1"
+)
 
 # Parte 2, RF2: Apresentar os dados de cada jogador do time
 print("Executando P2-RF2: Apresentar dados de cada jogador do time...")
-apresentar_dados_partidas_time_por_id(team_id, output_dir="reports/arquivos_csv/parte2-rf2", html_dir="reports/html/parte2-rf2", img_dir="reports/imagens/parte2-rf2")
+apresentar_dados_partidas_time_por_id(
+    team_id, 
+    output_dir="reports/arquivos_csv/parte2/parte2-rf2", 
+    html_dir="reports/html/parte2/parte2-rf2", 
+    img_dir="reports/imagens/parte2/parte2-rf2"
+)
 
 # Parte 2, RF3: Fornecer dados da partida contra time que o usuário escolher
 print("Executando P2-RF3: Apresentar dados da partida contra o time selecionado...")
 apresentar_dados_partidas_contra_time(
     opponent_abbr="LAL",
-    output_dir="reports/arquivos_csv/parte2-rf3",
-    html_dir="reports/html/parte2-rf3",
-    img_dir="reports/imagens/parte2-rf3"
+    output_dir="reports/arquivos_csv/parte2/parte2-rf3",
+    html_dir="reports/html/parte2/parte2-rf3",
+    img_dir="reports/imagens/parte2/parte2-rf3"
 )
 
 # Parte 2, RF4: Apresentar a quantidade de jogos realizados dentro e fora de casa e a quantidade de jogos dentro e fora de casa contra um determinado time [da escolha do  usuário]. 
 print("Executando P2-RF4: Apresentando jogos dentro e fora de casa dos jogadores e contra um time selecionado...")
 apresentar_dados_jogos_casa_fora(
     opponent_abbr="PHI",
-    output_dir="reports/arquivos_csv/parte2-rf4",
-    html_dir="reports/html/parte2-rf4",
-    img_dir="reports/imagens/parte2-rf4"
+    output_dir="reports/arquivos_csv/parte2/parte2-rf4",
+    html_dir="reports/html/parte2/parte2-rf4",
+    img_dir="reports/imagens/parte2/parte2-rf4"
 )
+
+# Parte 2, RF5: Apresentar e calcular a média de pontos, rebotes e assistências dos jogadores
+# Parte 2, RF5-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da média  
+players = [
+    {'PLAYER': 'Cam Thomas', 'PLAYER_ID': 1630560},
+    {'PLAYER': 'Cameron Johnson', 'PLAYER_ID': 1629661},
+    {'PLAYER': 'D\'Angelo Russell', 'PLAYER_ID': 1626156}
+]
+
+calcular_e_apresentar_medias(
+    players, 
+    output_dir = "reports/arquivos_csv/parte2/parte2-rf5",
+    html_dir="reports/html/parte2/parte2-rf5",
+    img_dir="reports/imagens/parte2/parte2-rf5"
+)
+
 
 print("Processamento concluído.")
