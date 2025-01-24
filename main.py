@@ -10,6 +10,7 @@ from src.rf.rf6 import apresentar_performance_defensiva
 from src.rf.rf7 import apresentar_jogos_do_time
 from src.rf.parte2_rf1 import apresentar_dados_jogadores
 from src.rf.parte2_rf2 import apresentar_dados_partidas_time_por_id
+from src.rf.parte2_rf3 import apresentar_dados_partidas_contra_time
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -88,5 +89,13 @@ apresentar_dados_jogadores(player_names, output_dir, html_dir, img_dir)
 print("Executando P2-RF2: Apresentar dados de cada jogador do time...")
 apresentar_dados_partidas_time_por_id(team_id, output_dir="reports/arquivos_csv/parte2-rf2", html_dir="reports/graficos_html/parte2-rf2", img_dir="reports/imagens/parte2-rf2")
 
+# Parte 2, RF3: Fornecer dados da partida contra time que o usuário escolher
+print("Executando P2-RF3: Apresentar dados da partida contra o time selecionado...")
+apresentar_dados_partidas_contra_time(
+    opponent_abbr="LAL",
+    output_dir="reports/arquivos_csv/parte2-rf3",
+    html_dir="reports/graficos_html/parte2-rf3",
+    img_dir="reports/imagens/parte2-rf3"
+)
 
 print("Processamento concluído.")

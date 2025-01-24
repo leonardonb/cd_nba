@@ -12,7 +12,6 @@ def calculate_age(birthdate):
     Calcula a idade a partir da data de nascimento.
     """
     try:
-        # Remover sufixo "T00:00:00" se presente
         birthdate = birthdate.split("T")[0] if "T" in birthdate else birthdate
         birthdate = datetime.strptime(birthdate, "%Y-%m-%d")
         today = datetime.today()
@@ -33,11 +32,11 @@ def fetch_player_salary(player_name):
     table = soup.find('table', {'class': 'hh-salaries-ranking-table'}) 
     rows = table.find_all('tr')
     
-    for row in rows[1:]: # Ignorar o cabeçalho 
+    for row in rows[1:]:
         cols = row.find_all('td') 
         name = cols[1].text.strip() 
         if player_name.lower() in name.lower(): 
-            salary = row.find('td', {'class': 'hh-salaries-sorted'}).text.strip() # Salário da temporada atual
+            salary = row.find('td', {'class': 'hh-salaries-sorted'}).text.strip()
             return salary 
         
     return "N/A"
@@ -128,7 +127,7 @@ def salvar_tabela_como_imagem(df, img_path, title):
         print("DataFrame vazio. Não é possível salvar como imagem.")
         return
 
-    fig, ax = plt.subplots(figsize=(12, len(df) * 0.6))  # Ajustar tamanho baseado no número de linhas
+    fig, ax = plt.subplots(figsize=(12, len(df) * 0.6))
     ax.axis("off")
     ax.axis("tight")
     ax.set_title(title, fontsize=16, weight="bold")
