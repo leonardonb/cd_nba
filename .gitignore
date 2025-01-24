@@ -7,4 +7,11 @@
 /dataSources/
 /dataSources.local.xml
 
+# Ignorar arquivos gerados em pycache
 **/__pycache__/
+
+# Ignorar arquivos gerados
+/reports/arquivos_csv
+/reports/graficos
+/reports/html
+/reports/imagens
