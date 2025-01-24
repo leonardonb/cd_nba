@@ -14,6 +14,7 @@ from src.rf.parte2.parte2_rf2 import apresentar_dados_partidas_time_por_id
 from src.rf.parte2.parte2_rf3 import apresentar_dados_partidas_contra_time
 from src.rf.parte2.parte2_rf4 import apresentar_dados_jogos_casa_fora
 from src.rf.parte2.parte2_rf5 import calcular_e_apresentar_medias
+from src.rf.parte2.parte2_rf6 import calcular_e_apresentar_medianas
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -146,6 +147,21 @@ calcular_e_apresentar_medias(
     output_dir = "reports/arquivos_csv/parte2/parte2-rf5",
     html_dir="reports/html/parte2/parte2-rf5",
     img_dir="reports/imagens/parte2/parte2-rf5"
+)
+
+# Parte 2, RF6: Apresentar e calcular a mediana de pontos, rebotes e assistências dos jogadores. 
+# Parte 2, RF6-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da mediana  
+players = [
+    {'PLAYER': 'Cam Thomas', 'PLAYER_ID': 1630560},
+    {'PLAYER': 'Cameron Johnson', 'PLAYER_ID': 1629661},
+    {'PLAYER': 'D\'Angelo Russell', 'PLAYER_ID': 1626156}
+]
+
+calcular_e_apresentar_medianas(
+    players, 
+    output_dir = "reports/arquivos_csv/parte2/parte2-rf6",
+    html_dir="reports/html/parte2/parte2-rf6",
+    img_dir="reports/imagens/parte2/parte2-rf6"
 )
 
 
