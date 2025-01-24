@@ -12,6 +12,7 @@ from src.rf.parte1_rf8 import rf_graficos_desempenho_brooklyn_nets
 from src.rf.parte2_rf1 import apresentar_dados_jogadores
 from src.rf.parte2_rf2 import apresentar_dados_partidas_time_por_id
 from src.rf.parte2_rf3 import apresentar_dados_partidas_contra_time
+from src.rf.parte2_rf4 import apresentar_dados_jogos_casa_fora
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -109,6 +110,15 @@ apresentar_dados_partidas_contra_time(
     output_dir="reports/arquivos_csv/parte2-rf3",
     html_dir="reports/html/parte2-rf3",
     img_dir="reports/imagens/parte2-rf3"
+)
+
+# Parte 2, RF4: Apresentar a quantidade de jogos realizados dentro e fora de casa e a quantidade de jogos dentro e fora de casa contra um determinado time [da escolha do  usuário]. 
+print("Executando P2-RF4: Apresentando jogos dentro e fora de casa dos jogadores e contra um time selecionado...")
+apresentar_dados_jogos_casa_fora(
+    opponent_abbr="PHI",
+    output_dir="reports/arquivos_csv/parte2-rf4",
+    html_dir="reports/html/parte2-rf4",
+    img_dir="reports/imagens/parte2-rf4"
 )
 
 print("Processamento concluído.")
