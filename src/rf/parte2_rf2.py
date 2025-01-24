@@ -36,6 +36,8 @@ def fetch_player_game_data(player_id):
     try:
         player_log = playergamelog.PlayerGameLog(player_id=player_id, season="2024-25").get_data_frames()[0]
 
+        player_log = player_log[player_log['MATCHUP'].str.contains("BKN")]
+
         player_log = player_log.rename(columns={
             'GAME_DATE': 'Data do Jogo',
             'MATCHUP': 'Adversário',
