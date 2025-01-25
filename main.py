@@ -15,6 +15,7 @@ from src.rf.parte2.parte2_rf3 import apresentar_dados_partidas_contra_time
 from src.rf.parte2.parte2_rf4 import apresentar_dados_jogos_casa_fora
 from src.rf.parte2.parte2_rf5 import calcular_e_apresentar_medias
 from src.rf.parte2.parte2_rf6 import calcular_e_apresentar_medianas
+from src.rf.parte2.parte2_rf7 import calcular_e_apresentar_modas
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -36,6 +37,12 @@ os.makedirs(html_dir, exist_ok=True)
 os.makedirs(img_dir, exist_ok=True)
 
 player_names = ["Cam Thomas", "Cameron Johnson", "D'Angelo Russell"]
+
+players = [
+    {'PLAYER': 'Cam Thomas', 'PLAYER_ID': 1630560},
+    {'PLAYER': 'Cameron Johnson', 'PLAYER_ID': 1629661},
+    {'PLAYER': 'D\'Angelo Russell', 'PLAYER_ID': 1626156}
+]
 
 # Parte 01 RF1: Listar times por conferência
 print("Executando RF1: Listar times por conferência...")
@@ -136,12 +143,7 @@ apresentar_dados_jogos_casa_fora(
 
 # Parte 2, RF5: Apresentar e calcular a média de pontos, rebotes e assistências dos jogadores
 # Parte 2, RF5-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da média  
-players = [
-    {'PLAYER': 'Cam Thomas', 'PLAYER_ID': 1630560},
-    {'PLAYER': 'Cameron Johnson', 'PLAYER_ID': 1629661},
-    {'PLAYER': 'D\'Angelo Russell', 'PLAYER_ID': 1626156}
-]
-
+print("Executando P2-RF5: Apresentando e calculando média de pontos, rebotes e assistências dos jogadores, e também as porcentagens abaixo da média...")
 calcular_e_apresentar_medias(
     players, 
     output_dir = "reports/arquivos_csv/parte2/parte2-rf5",
@@ -151,12 +153,7 @@ calcular_e_apresentar_medias(
 
 # Parte 2, RF6: Apresentar e calcular a mediana de pontos, rebotes e assistências dos jogadores. 
 # Parte 2, RF6-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da mediana  
-players = [
-    {'PLAYER': 'Cam Thomas', 'PLAYER_ID': 1630560},
-    {'PLAYER': 'Cameron Johnson', 'PLAYER_ID': 1629661},
-    {'PLAYER': 'D\'Angelo Russell', 'PLAYER_ID': 1626156}
-]
-
+print("Executando P2-RF6: Apresentando e calculando mediana de pontos, rebotes e assistências dos jogadores, e também as porcentagens abaixo da mediana...")
 calcular_e_apresentar_medianas(
     players, 
     output_dir = "reports/arquivos_csv/parte2/parte2-rf6",
@@ -164,5 +161,14 @@ calcular_e_apresentar_medianas(
     img_dir="reports/imagens/parte2/parte2-rf6"
 )
 
+# Parte2, RF7: Apresentar e calcular a moda de pontos, rebotes e assistências dos jogadores. Exibir a quantidade de vezes que a moda aparece para cada item. 
+# Parte2, RF7-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da média.
+print("Executando P2-RF7: Apresentando e calculando moda de pontos, rebotes e assistências dos jogadores, e também as porcentagens abaixo da média...")
+calcular_e_apresentar_modas(
+    players,
+    output_dir = "reports/arquivos_csv/parte2/parte2-rf7",
+    html_dir="reports/html/parte2/parte2-rf7",
+    img_dir="reports/imagens/parte2/parte2-rf7"
+)
 
 print("Processamento concluído.")
