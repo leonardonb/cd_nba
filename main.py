@@ -16,6 +16,7 @@ from src.rf.parte2.parte2_rf4 import apresentar_dados_jogos_casa_fora
 from src.rf.parte2.parte2_rf5 import calcular_e_apresentar_medias
 from src.rf.parte2.parte2_rf6 import calcular_e_apresentar_medianas
 from src.rf.parte2.parte2_rf7 import calcular_e_apresentar_modas
+from src.rf.parte2.parte2_rf8 import calcular_e_apresentar_desvios
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -170,5 +171,15 @@ calcular_e_apresentar_modas(
     html_dir="reports/html/parte2/parte2-rf7",
     img_dir="reports/imagens/parte2/parte2-rf7"
 )
+
+# Parte2, RF8: Apresentar o Desvio Padrão de pontos, rebotes e assistências dos jogadores.  Quanto mais próximo de zero, mais agrupado em torno da média os dados estão. 
+print("Executando P2-RF8: Apresentar o Desvio Padrão de pontos, rebotes e assistências dos jogadores...")
+calcular_e_apresentar_desvios(
+    players,
+    output_dir = "reports/arquivos_csv/parte2/parte2-rf8",
+    html_dir="reports/html/parte2/parte2-rf8",
+    img_dir="reports/imagens/parte2/parte2-rf8"
+)
+
 
 print("Processamento concluído.")
