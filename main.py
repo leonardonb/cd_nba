@@ -17,6 +17,7 @@ from src.rf.parte2.parte2_rf5 import calcular_e_apresentar_medias
 from src.rf.parte2.parte2_rf6 import calcular_e_apresentar_medianas
 from src.rf.parte2.parte2_rf7 import calcular_e_apresentar_modas
 from src.rf.parte2.parte2_rf8 import calcular_e_apresentar_desvios
+from src.rf.parte2.parte2_rf9 import apresentar_totais_carreira
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -179,6 +180,15 @@ calcular_e_apresentar_desvios(
     output_dir = "reports/arquivos_csv/parte2/parte2-rf8",
     html_dir="reports/html/parte2/parte2-rf8",
     img_dir="reports/imagens/parte2/parte2-rf8"
+)
+
+# Parte2, RF9: O sistema deve apresentar a quantidade de pontos, assistências e rebotes de toda a  carreira do jogador. 
+print("Executando P2-RF9: apresentando a quantidade de pontos, assistências e rebotes de toda a carreira dos jogadores... ")
+apresentar_totais_carreira(
+    players,
+    output_dir = "reports/arquivos_csv/parte2/parte2-rf9",
+    html_dir="reports/html/parte2/parte2-rf9",
+    img_dir="reports/imagens/parte2/parte2-rf9"
 )
 
 
