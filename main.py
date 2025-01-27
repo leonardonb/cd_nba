@@ -1,4 +1,3 @@
-# Importar funções de outros RFs
 # import relatorio
 
 from src.rf.parte1.parte1_rf1 import listar_times_conferencia
@@ -18,6 +17,7 @@ from src.rf.parte2.parte2_rf6 import calcular_e_apresentar_medianas
 from src.rf.parte2.parte2_rf7 import calcular_e_apresentar_modas
 from src.rf.parte2.parte2_rf8 import calcular_e_apresentar_desvios
 from src.rf.parte2.parte2_rf9 import apresentar_totais_carreira
+from src.rf.parte2.parte2_rf10 import comparar_estatisticas
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -183,7 +183,7 @@ calcular_e_apresentar_desvios(
 )
 
 # Parte2, RF9: O sistema deve apresentar a quantidade de pontos, assistências e rebotes de toda a  carreira do jogador. 
-print("Executando P2-RF9: apresentando a quantidade de pontos, assistências e rebotes de toda a carreira dos jogadores... ")
+print("Executando P2-RF9: Apresentando a quantidade de pontos, assistências e rebotes de toda a carreira dos jogadores... ")
 apresentar_totais_carreira(
     players,
     output_dir = "reports/arquivos_csv/parte2/parte2-rf9",
@@ -191,5 +191,14 @@ apresentar_totais_carreira(
     img_dir="reports/imagens/parte2/parte2-rf9"
 )
 
+# Parte 2, RF10: O sistema deve apresentar a quantidade de pontos, assistências e rebotes de toda a carreira do jogador e comparada com a atual temporada.
+# Parte 2, RF10-A: Apresentar gráficos de desempenho dos seus jogadores [temporada atual] para compor o Dashboard do projeto.
+print("Executando P2-RF10: Apresentando a quantidade de pontos, assistências e rebotes de toda a carreira dos jogadores e comparando com a atual, e gerando os gráficos para o Dashboard... ")
+comparar_estatisticas(
+    players,
+    output_dir="reports/arquivos_csv/parte2/parte2-rf10",
+    html_dir="reports/html/parte2/parte2-rf10",
+    img_dir="reports/imagens/parte2/parte2-rf10"
+)
 
 print("Processamento concluído.")
