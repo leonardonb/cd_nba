@@ -5,31 +5,22 @@ import pandas as pd
 from nba_api.stats.endpoints import teamgamelog
 
 def rf_graficos_desempenho_brooklyn_nets(team_id=1610612751, seasons=["2023-24", "2024-25"], output_dir="reports/graficos/parte1", csv_output_dir="reports/arquivos_csv/parte1/graficos_csv"):
-    """
-    Gera gráficos de desempenho do Brooklyn Nets para as temporadas especificadas e salva os dados correspondentes em CSV.
-
-    Args:
-        team_id (int): ID do Brooklyn Nets na NBA API.
-        seasons (list): Lista de temporadas (formato "YYYY-YY") para coletar dados.
-        output_dir (str): Diretório para salvar os gráficos gerados.
-        csv_output_dir (str): Diretório para salvar os arquivos CSV dos gráficos.
-    """
-    # Criar diretórios para os gráficos e CSVs
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(csv_output_dir, exist_ok=True)
 
-    # Função para coletar dados da API
     def coletar_dados_temporada(team_id, season):
         print(f"Coletando dados para a temporada {season}...")
         game_log = teamgamelog.TeamGameLog(team_id=team_id, season=season).get_data_frames()[0]
         game_log["SEASON"] = season  # Adicionar a coluna da temporada
         return game_log
 
-    # Coletar dados para todas as temporadas especificadas
     all_seasons_data = pd.concat([coletar_dados_temporada(team_id, season) for season in seasons], ignore_index=True)
 
-    # Adicionar colunas calculadas
+    # Correção da coluna PTS_PA para evitar desalinhamento de dados
+    all_seasons_data = all_seasons_data.sort_values(by=["SEASON", "Game_ID"], ascending=[True, False])
     all_seasons_data["PTS_PA"] = all_seasons_data["PTS"].shift(-1)
+    all_seasons_data["PTS_PA"] = all_seasons_data["PTS_PA"].fillna(all_seasons_data["PTS"].mean())
+
     all_seasons_data["WINS"] = all_seasons_data["WL"].apply(lambda x: 1 if x == "W" else 0)
     all_seasons_data["LOSSES"] = all_seasons_data["WL"].apply(lambda x: 1 if x == "L" else 0)
     all_seasons_data["HOME_GAME"] = all_seasons_data["MATCHUP"].apply(lambda x: "vs" in x)
@@ -64,7 +55,7 @@ def rf_graficos_desempenho_brooklyn_nets(team_id=1610612751, seasons=["2023-24",
     wins_losses.to_csv(barras_empilhado_csv_path, index=False)
     print(f"CSV do Gráfico de Barras Empilhado salvo em {barras_empilhado_csv_path}")
 
-    # 2. Gráfico de Pizza
+    # 2. Gráficos de Pizza
     print("Gerando Gráficos de Pizza...")
     for season in seasons:
         season_data = all_seasons_data[all_seasons_data["SEASON"] == season]
@@ -102,29 +93,13 @@ def rf_graficos_desempenho_brooklyn_nets(team_id=1610612751, seasons=["2023-24",
         avg_points_allowed=("PTS_PA", "mean"),
     ).reset_index()
 
-    # Depuração: Verificar os dados calculados
-    print("Dados calculados para o gráfico de radar:")
-    print(radar_data)
-
-    # Garantir que os valores sejam válidos
     if radar_data.empty or radar_data.isnull().values.any():
         print("Erro: Dados insuficientes ou inconsistentes para criar o gráfico de radar.")
         return
 
     categories = ["Pontos Marcados", "Pontos Sofridos"]
-    try:
-        values_home = (
-            radar_data.loc[radar_data["HOME_GAME"] == True, "avg_points"].values[0],
-            radar_data.loc[radar_data["HOME_GAME"] == True, "avg_points_allowed"].values[0],
-        )
-        values_away = (
-            radar_data.loc[radar_data["HOME_GAME"] == False, "avg_points"].values[0],
-            radar_data.loc[radar_data["HOME_GAME"] == False, "avg_points_allowed"].values[0],
-        )
-    except IndexError:
-        print("Erro: Não foi possível acessar os valores para o gráfico de radar.")
-        values_home = [0, 0]
-        values_away = [0, 0]
+    values_home = radar_data[radar_data["HOME_GAME"] == True][["avg_points", "avg_points_allowed"]].values.flatten().tolist()
+    values_away = radar_data[radar_data["HOME_GAME"] == False][["avg_points", "avg_points_allowed"]].values.flatten().tolist()
 
     values_home += values_home[:1]
     values_away += values_away[:1]

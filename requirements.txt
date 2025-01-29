@@ -7,3 +7,4 @@ scikit-learn
 pygam
 mpld3
 plotly
+kaleido
