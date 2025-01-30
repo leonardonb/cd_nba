@@ -109,25 +109,25 @@ def apresentar_jogos_do_time(team_abbr, seasons, output_dir):
         dados_completos = pd.concat([dados_completos, dados], ignore_index=True)
 
     # Diretórios de saída
-    csv_dir = os.path.join(output_dir, "arquivos_csv")
-    html_dir = os.path.join(output_dir, "html/parte1")
-    img_dir = os.path.join(output_dir, "imagens")
+    csv_dir = os.path.join("reports/arquivos_csv/parte1")
+    html_dir = os.path.join("reports/html/parte1")
+    img_dir = os.path.join("reports/imagens/parte1")
     os.makedirs(csv_dir, exist_ok=True)
     os.makedirs(html_dir, exist_ok=True)
     os.makedirs(img_dir, exist_ok=True)
 
     # Salvar como CSV
-    csv_path = os.path.join(csv_dir, "rf7_jogos_do_time.csv")
+    csv_path = os.path.join("reports/arquivos_csv/parte1", "rf7_jogos_do_time.csv")
     dados_completos.to_csv(csv_path, index=False)
     print(f"Dados salvos como CSV em: {csv_path}")
 
     # Salvar como HTML
-    html_path = os.path.join(html_dir, "rf7_jogos_do_time.html")
+    html_path = os.path.join("reports/html/parte1", "rf7_jogos_do_time.html")
     dados_completos.to_html(html_path, index=False)
     print(f"Dados salvos como HTML em: {html_path}")
 
     # Salvar como múltiplas imagens (JPEG) da tabela
-    salvar_tabela_em_paginas_jpg(dados_completos, img_dir, "rf7_jogos_do_time")
+    salvar_tabela_em_paginas_jpg(dados_completos, "reports/imagens/parte1", "rf7_jogos_do_time")
 
     return dados_completos
 

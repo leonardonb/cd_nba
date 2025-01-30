@@ -4,7 +4,7 @@ from nba_api.stats.endpoints import TeamGameLog
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-def calcular_vitorias_derrotas_por_temporada(team_id=1610612751, seasons=["2023-24", "2024-25"], output_dir="reports/arquivos_csv", img_dir="reports/imagens", html_dir="reports/html/parte1"):
+def calcular_vitorias_derrotas_por_temporada(team_id=1610612751, seasons=["2023-24", "2024-25"], output_dir="reports/arquivos_csv/parte1", img_dir="reports/imagens/parte1", html_dir="reports/html/parte1"):
     """
     RF3: Apresentar o total de vitórias e derrotas do time Brooklyn Nets,
     separados por partidas jogadas em casa (mandante) e fora de casa (visitante),
@@ -73,9 +73,9 @@ def calcular_vitorias_derrotas_por_temporada(team_id=1610612751, seasons=["2023-
         df_relatorio["Data"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         # Caminhos para salvar os relatórios
-        output_csv_path = os.path.join(output_dir, f"rf3_relatorio_vitorias_derrotas_brooklyn_nets_{season}.csv")
-        output_img_path = os.path.join(img_dir, f"rf3_relatorio_vitorias_derrotas_brooklyn_nets_{season}.jpg")
-        output_html_path = os.path.join(html_dir, f"rf3_relatorio_vitorias_derrotas_brooklyn_nets_{season}.html")
+        output_csv_path = os.path.join("reports/arquivos_csv/parte1", f"rf3_relatorio_vitorias_derrotas_brooklyn_nets_{season}.csv")
+        output_img_path = os.path.join("reports/imagens/parte1", f"rf3_relatorio_vitorias_derrotas_brooklyn_nets_{season}.jpg")
+        output_html_path = os.path.join("reports/html/parte1", f"rf3_relatorio_vitorias_derrotas_brooklyn_nets_{season}.html")
 
         # Salvar o relatório em CSV
         df_relatorio.to_csv(output_csv_path, index=False)

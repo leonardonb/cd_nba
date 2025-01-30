@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 
-def listar_times_conferencia(output_dir="reports/arquivos_csv", html_dir="reports/html/parte1", img_dir="reports/imagens"):
+def listar_times_conferencia(output_dir="reports/arquivos_csv/parte1", html_dir="reports/html/parte1", img_dir="reports/imagens/parte1"):
     """
     RF1: Listar todos os times da NBA agrupados por conferência e unificados,
     gerando relatórios em CSV, HTML e JPG.
@@ -50,15 +50,15 @@ def listar_times_conferencia(output_dir="reports/arquivos_csv", html_dir="report
     os.makedirs(img_dir, exist_ok=True)
 
     # Caminhos para salvar arquivos
-    leste_csv_path = os.path.join(output_dir, "rf1_times_conferencia_leste.csv")
-    oeste_csv_path = os.path.join(output_dir, "rf1_times_conferencia_oeste.csv")
-    unificada_csv_path = os.path.join(output_dir, "rf1_times_unificados.csv")
+    leste_csv_path = os.path.join("reports/arquivos_csv/parte1", "rf1_times_conferencia_leste.csv")
+    oeste_csv_path = os.path.join("reports/arquivos_csv/parte1", "rf1_times_conferencia_oeste.csv")
+    unificada_csv_path = os.path.join("reports/arquivos_csv/parte1", "rf1_times_unificados.csv")
     leste_html_path = os.path.join("reports/html/parte1", "rf1_tabela_times_leste.html")
     oeste_html_path = os.path.join("reports/html/parte1", "rf1_tabela_times_oeste.html")
     unificada_html_path = os.path.join("reports/html/parte1", "rf1_tabela_times_unificados.html")
-    leste_img_path = os.path.join(img_dir, "rf1_times_conferencia_leste.jpg")
-    oeste_img_path = os.path.join(img_dir, "rf1_times_conferencia_oeste.jpg")
-    unificada_img_path = os.path.join(img_dir, "rf1_times_unificados.jpg")
+    leste_img_path = os.path.join("reports/imagens/parte1", "rf1_times_conferencia_leste.jpg")
+    oeste_img_path = os.path.join("reports/imagens/parte1", "rf1_times_conferencia_oeste.jpg")
+    unificada_img_path = os.path.join("reports/imagens/parte1", "rf1_times_unificados.jpg")
 
     # Salvar tabelas em CSV
     leste.to_csv(leste_csv_path, index=False)

@@ -48,28 +48,28 @@ players = [
 
 # Parte 01 RF1: Listar times por conferência
 print("Executando RF1: Listar times por conferência...")
-listar_times_conferencia(output_dir, "reports/html/parte1", img_dir)
+listar_times_conferencia("reports/imagens/parte1/parte1", "reports/html/parte1", "reports/imagens/parte1")
 
 # Parte 01 RF2: Apresentar classificação atual
 print("Executando RF2: Apresentar classificação atual dos times...")
-apresentar_classificacao_atual(output_dir, "reports/html/parte1", img_dir)
+apresentar_classificacao_atual("reports/imagens/parte1/parte1", "reports/html/parte1", "reports/imagens/parte1")
 
 # Parte 01 RF3: Calcular vitórias e derrotas
 print("Executando RF3: Calcular vitórias e derrotas do time...")
-calcular_vitorias_derrotas_por_temporada(team_id, seasons, output_dir, img_dir)
+calcular_vitorias_derrotas_por_temporada(team_id, seasons, "reports/imagens/parte1/parte1", "reports/imagens/parte1")
 
 # Parte 01 RF4: Calcular totais do time
 print("Executando RF4: Calcular totais do time por temporada...")
-calcular_totais_do_time(team_id, seasons, output_dir, "reports/html/parte1", img_dir)
+calcular_totais_do_time(team_id, seasons, "reports/imagens/parte1/parte1", "reports/html/parte1", "reports/imagens/parte1")
 
 # Parte 01 RF5: Apresentar divisão de dados do time
 print("Executando RF5: Divisão de dados do time...")
 apresentar_dados_divididos(
     team_id=team_id,
     seasons=seasons,
-    output_dir=output_dir,
+    output_dir="reports/imagens/parte1/parte1",
     html_dir="reports/html/parte1",
-    img_dir=img_dir
+    img_dir="reports/imagens/parte1"
 )
 
 # Parte 01 RF6: Apresentar os dados referentes a performance defensiva do time
@@ -77,16 +77,16 @@ print("Executando RF6: Performance defensiva do time...")
 apresentar_performance_defensiva(
     team_id=1610612751,
     seasons=["2023-24", "2024-25"],
-    output_dir="reports/arquivos_csv",
+    output_dir="reports/imagens/parte1/parte1",
     html_dir="reports/html/parte1",
-    img_dir="reports/imagens"
+    img_dir="reports/imagens/parte1"
 )
 
 # Parte 01 RF7: Apresentar jogos do Time
 print("Executando RF7: Apresentar jogos do time...")
 
 # Diretório base para saída
-base_output_dir = "reports"
+base_output_dir = "reports/imagens/parte1"
 
 # Executar o RF7 e salvar os resultados
 dados_nets = apresentar_jogos_do_time(team_abbr, seasons, base_output_dir)

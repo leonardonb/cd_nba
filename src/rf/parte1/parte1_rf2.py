@@ -3,7 +3,7 @@ import os
 from nba_api.stats.endpoints import LeagueStandingsV3
 import matplotlib.pyplot as plt
 
-def apresentar_classificacao_atual(output_dir="reports/arquivos_csv", html_dir="reports/html/parte1", img_dir="reports/imagens"):
+def apresentar_classificacao_atual(output_dir="reports/arquivos_csv/parte1", html_dir="reports/html/parte1", img_dir="reports/imagens/parte1"):
     """
     RF2: Apresentar a classificação atual dos times agrupados por conferência,
     incluindo uma classificação unificada, salvando relatórios em CSV, HTML e JPG.
@@ -45,15 +45,15 @@ def apresentar_classificacao_atual(output_dir="reports/arquivos_csv", html_dir="
     os.makedirs(img_dir, exist_ok=True)
 
     # Caminhos para salvar arquivos
-    leste_csv_path = os.path.join(output_dir, "rf2_classificacao_leste.csv")
-    oeste_csv_path = os.path.join(output_dir, "rf2_classificacao_oeste.csv")
-    unificada_csv_path = os.path.join(output_dir, "rf2_classificacao_unificada.csv")
-    leste_html_path = os.path.join(html_dir, "rf2_classificacao_leste.html")
-    oeste_html_path = os.path.join(html_dir, "rf2_classificacao_oeste.html")
-    unificada_html_path = os.path.join(html_dir, "rf2_classificacao_unificada.html")
-    leste_img_path = os.path.join(img_dir, "rf2_classificacao_leste.jpg")
-    oeste_img_path = os.path.join(img_dir, "rf2_classificacao_oeste.jpg")
-    unificada_img_path = os.path.join(img_dir, "rf2_classificacao_unificada.jpg")
+    leste_csv_path = os.path.join("reports/arquivos_csv/parte1", "rf2_classificacao_leste.csv")
+    oeste_csv_path = os.path.join("reports/arquivos_csv/parte1", "rf2_classificacao_oeste.csv")
+    unificada_csv_path = os.path.join("reports/arquivos_csv/parte1", "rf2_classificacao_unificada.csv")
+    leste_html_path = os.path.join("reports/html/parte1", "rf2_classificacao_leste.html")
+    oeste_html_path = os.path.join("reports/html/parte1", "rf2_classificacao_oeste.html")
+    unificada_html_path = os.path.join("reports/html/parte1", "rf2_classificacao_unificada.html")
+    leste_img_path = os.path.join("reports/imagens/parte1", "rf2_classificacao_leste.jpg")
+    oeste_img_path = os.path.join("reports/imagens/parte1", "rf2_classificacao_oeste.jpg")
+    unificada_img_path = os.path.join("reports/imagens/parte1", "rf2_classificacao_unificada.jpg")
 
     # Salvar tabelas em CSV
     leste.to_csv(leste_csv_path, index=False)

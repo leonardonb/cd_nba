@@ -4,7 +4,7 @@ from nba_api.stats.endpoints import TeamGameLog
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-def apresentar_dados_divididos(team_id=1610612751, seasons=["2023-24", "2024-25"], output_dir="reports/arquivos_csv", html_dir="reports/html/parte1", img_dir="reports/imagens"):
+def apresentar_dados_divididos(team_id=1610612751, seasons=["2023-24", "2024-25"], output_dir="reports/arquivos_csv/parte1", html_dir="reports/html/parte1", img_dir="reports/imagens/parte1"):
     """
     RF5: Divisão de dados do time, contendo:
     - Total de Rebotes
@@ -77,9 +77,9 @@ def apresentar_dados_divididos(team_id=1610612751, seasons=["2023-24", "2024-25"
         return None
 
     # Caminhos para salvar os relatórios
-    output_csv_path = os.path.join(output_dir, "rf5_dados_divididos_brooklyn_nets.csv")
-    output_html_path = os.path.join(html_dir, "rf5_dados_divididos_brooklyn_nets.html")
-    output_img_path = os.path.join(img_dir, "rf5_dados_divididos_brooklyn_nets.jpg")
+    output_csv_path = os.path.join("reports/arquivos_csv/parte1", "rf5_dados_divididos_brooklyn_nets.csv")
+    output_html_path = os.path.join("reports/html/parte1", "rf5_dados_divididos_brooklyn_nets.html")
+    output_img_path = os.path.join("reports/imagens/parte1", "rf5_dados_divididos_brooklyn_nets.jpg")
 
     # Salvar o relatório em CSV
     df_dados.to_csv(output_csv_path, index=False)
