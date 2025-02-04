@@ -15,3 +15,6 @@
 /reports/graficos
 /reports/html
 /reports/imagens
+
+# ignorar variaveis de ambiente
+.env
