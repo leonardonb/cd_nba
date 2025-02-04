@@ -103,5 +103,3 @@ def apresentar_performance_defensiva(team_id=1610612751, seasons=["2023-24", "20
     print("Processamento concluído.")
     return df_defensivo
 
-# Exemplo de execução para Brooklyn Nets
-apresentar_performance_defensiva()

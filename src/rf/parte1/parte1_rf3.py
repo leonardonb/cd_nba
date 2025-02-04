@@ -104,5 +104,3 @@ def calcular_vitorias_derrotas_por_temporada(team_id=1610612751, seasons=["2023-
 
     print("Processamento concluído para todas as temporadas.")
 
-# Exemplo de execução para Brooklyn Nets
-calcular_vitorias_derrotas_por_temporada()

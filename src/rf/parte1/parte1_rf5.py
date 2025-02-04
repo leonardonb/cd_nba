@@ -109,5 +109,3 @@ def apresentar_dados_divididos(team_id=1610612751, seasons=["2023-24", "2024-25"
     print("Processamento concluído.")
     return df_dados
 
-# Exemplo de execução para Brooklyn Nets
-apresentar_dados_divididos()

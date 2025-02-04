@@ -97,7 +97,7 @@ def calcular_e_apresentar_medias(players, output_dir, html_dir, img_dir):
         except Exception as e:
             print(f"Erro ao processar dados do jogador {player_name}: {e}")
 
-    print('Processamento do RF5 concluído.')
+    print('Processamento da Parte2-RF5 concluído.')
 
 
 def salvar_tabela_como_imagem(df, img_path, title):

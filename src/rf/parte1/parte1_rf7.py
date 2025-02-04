@@ -29,7 +29,6 @@ def coletar_jogos_basketball_reference(team_abbr, year):
     # Extraindo cabeçalhos da tabela
     headers = [th.text.strip() if th.text.strip() else f"Unnamed_{i}" \
                for i, th in enumerate(table.find('thead').find_all('th'))][1:]  # Ignorar índice
-    print(f"Colunas encontradas: {headers}")
 
     # Extraindo linhas da tabela
     rows = []
@@ -130,12 +129,3 @@ def apresentar_jogos_do_time(team_abbr, seasons, output_dir):
     salvar_tabela_em_paginas_jpg(dados_completos, "reports/imagens/parte1", "rf7_jogos_do_time")
 
     return dados_completos
-
-# Exemplo de uso
-if __name__ == "__main__":
-    team_abbr = "BRK"  # Abreviação do Brooklyn Nets
-    seasons = ["2023-24", "2024-25"]  # Temporadas no formato 'YYYY-YY'
-    output_dir = "reports"
-
-    dados = apresentar_jogos_do_time(team_abbr, seasons, output_dir)
-    print(dados.head())

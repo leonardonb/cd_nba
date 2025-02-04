@@ -6,6 +6,11 @@ from nba_api.stats.endpoints import playercareerstats, playergamelog
 import pandas as pd
 import os
 import statistics
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+engine_image = os.getenv('ENGINE_IMAGE')
 
 def fetch_career_stats(player_id):
     """
@@ -153,7 +158,7 @@ def comparar_estatisticas(players, output_dir, html_dir, img_dir):
         except Exception as e:
             print(f"Erro ao processar dados do jogador {player_name}: {e}")
 
-    print('Processamento do RF10 concluído.')
+    print('Processamento da Parte2-RF10 concluído.')
 
 
 def salvar_graficos_distribuicao(player_name, dados, img_dir, html_dir):
@@ -211,9 +216,9 @@ def salvar_graficos_distribuicao(player_name, dados, img_dir, html_dir):
         )
 
         # Salvar gráfico como .jpg
+        # .env contendo a engine referente para cada um: kaleido ou orca
         img_path = os.path.join(img_dir, f"{player_name}_distribuicao_{nome.lower()}.jpg")
-        img_path = os.path.normpath(img_path)  # Normaliza para o formato correto do sistema operacional
-        fig.write_image(img_path, format='jpg', engine='orca')
+        fig.write_image(img_path, format='jpg', engine=engine_image)
         print(f"Gráfico de distribuição salvo em: {img_path}")
 
         # Salvar gráfico como HTML
