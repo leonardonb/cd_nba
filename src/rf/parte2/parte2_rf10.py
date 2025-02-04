@@ -1,3 +1,4 @@
+import matplotlib
 from matplotlib import pyplot as plt
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
@@ -211,7 +212,8 @@ def salvar_graficos_distribuicao(player_name, dados, img_dir, html_dir):
 
         # Salvar gráfico como .jpg
         img_path = os.path.join(img_dir, f"{player_name}_distribuicao_{nome.lower()}.jpg")
-        fig.write_image(img_path, format='jpg', engine='kaleido')
+        img_path = os.path.normpath(img_path)  # Normaliza para o formato correto do sistema operacional
+        fig.write_image(img_path, format='jpg', engine='orca')
         print(f"Gráfico de distribuição salvo em: {img_path}")
 
         # Salvar gráfico como HTML
