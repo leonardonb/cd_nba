@@ -101,7 +101,7 @@ def apresentar_dados_jogos_casa_fora(opponent_abbr, output_dir, html_dir, img_di
         except Exception as e:
             print(f"Erro ao processar dados do jogador {player_name}: {e}")
 
-    print('Processamento do RF4 concluído.')
+    print('Processamento da Parte2-RF4 concluído.')
 
 
 def salvar_tabela_como_imagem(df, img_path, title):

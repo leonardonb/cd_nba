@@ -103,5 +103,3 @@ def calcular_totais_do_time(team_id=1610612751, seasons=["2023-24", "2024-25"], 
     print("Processamento concluído para todas as temporadas.")
     return df_totais
 
-# Exemplo de execução para Brooklyn Nets
-calcular_totais_do_time()

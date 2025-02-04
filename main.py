@@ -1,5 +1,3 @@
-# import relatorio
-
 from src.rf.parte1.parte1_rf1 import listar_times_conferencia
 from src.rf.parte1.parte1_rf2 import apresentar_classificacao_atual
 from src.rf.parte1.parte1_rf3 import calcular_vitorias_derrotas_por_temporada
@@ -18,6 +16,7 @@ from src.rf.parte2.parte2_rf7 import calcular_e_apresentar_modas
 from src.rf.parte2.parte2_rf8 import calcular_e_apresentar_desvios
 from src.rf.parte2.parte2_rf9 import apresentar_totais_carreira
 from src.rf.parte2.parte2_rf10 import comparar_estatisticas
+from src.rf.parte3.parte3_rf1 import aplicar_metodo_gumbel
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -90,10 +89,6 @@ base_output_dir = "reports/imagens/parte1"
 
 # Executar o RF7 e salvar os resultados
 dados_nets = apresentar_jogos_do_time(team_abbr, seasons, base_output_dir)
-
-# Exibir as primeiras linhas do DataFrame processado
-print("Dados do RF7 processados:")
-print(dados_nets.head())
 
 # Parte 1 RF8: Gráficos de desempenho do Brooklyn Nets
 print("Executando RF8: Gerar gráficos de desempenho do Brooklyn Nets...")
@@ -200,5 +195,37 @@ comparar_estatisticas(
     html_dir="reports/html/parte2/parte2-rf10",
     img_dir="reports/imagens/parte2/parte2-rf10"
 )
+
+# Parte 3, RF1: Precisamos modelar e prever eventos extremos, assim precisamos verificar em cima dos dados que possuímos as probabilidades de ocorrência de pontuação, assistências e rebotes máximos e mínimos.
+print("Executando P3-RF1: Modelagem de eventos extremos usando Gumbel...")
+csv_paths = {
+    "Cam Thomas": "./reports/arquivos_csv/parte2/parte2-rf2/Cam Thomas_dados_partidas.csv",
+    "Cameron Johnson": "./reports/arquivos_csv/parte2/parte2-rf2/Cameron Johnson_dados_partidas.csv",
+    "D'Angelo Russell": "./reports/arquivos_csv/parte2/parte2-rf2/D'Angelo Russell_dados_partidas.csv"
+}
+
+df_cam_thomas = pd.read_csv(csv_paths["Cam Thomas"])
+df_cameron_johnson = pd.read_csv(csv_paths["Cameron Johnson"])
+df_dangelo_russell = pd.read_csv(csv_paths["D'Angelo Russell"])
+    
+valores_x = {
+    'PTS': 20,
+    'REB': 15,
+    'AST': 10
+}
+valores_y = {
+    'PTS': 15,
+    'REB': 10,
+    'AST': 5
+}
+valores_z = {
+    'PTS': 25,
+    'REB': 20,
+    'AST': 15
+}
+
+cam = aplicar_metodo_gumbel(df_cam_thomas, valores_x)
+camerom = aplicar_metodo_gumbel(df_cameron_johnson, valores_y)
+dangelo = aplicar_metodo_gumbel(df_dangelo_russell, valores_z)
 
 print("Processamento concluído.")
