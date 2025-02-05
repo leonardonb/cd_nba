@@ -2,6 +2,10 @@ import os
 import plotly.graph_objects as go
 import pandas as pd
 from nba_api.stats.endpoints import teamgamelog
+from dotenv import load_dotenv
+
+load_dotenv()
+engine_image = os.getenv('ENGINE_IMAGE')
 
 def rf_graficos_desempenho_brooklyn_nets(
         team_id=1610612751,
@@ -84,7 +88,7 @@ def rf_graficos_desempenho_brooklyn_nets(
     barras_csv_path = os.path.join(csv_output_dir, "rf8_barras_empilhado_vitorias_derrotas.csv")
 
     fig.write_html(barras_html_path)
-    fig.write_image(barras_img_path, format="jpg", engine="orca")
+    fig.write_image(barras_img_path, format="jpg", engine=engine_image)
     wins_losses.to_csv(barras_csv_path, index=False)
 
     print(f"Gráficos salvos em {barras_html_path} e {barras_img_path}")
@@ -110,7 +114,7 @@ def rf_graficos_desempenho_brooklyn_nets(
         pizza_csv_path = os.path.join(csv_output_dir, f"rf8_grafico_pizza_{season}.csv")
 
         fig.write_html(pizza_html_path)
-        fig.write_image(pizza_img_path, format="jpg", engine="orca")
+        fig.write_image(pizza_img_path, format="jpg", engine=engine_image)
         pd.DataFrame({"Categoria": labels, "Frequência": values}).to_csv(pizza_csv_path, index=False)
 
         print(f"Gráficos salvos para {season} em {pizza_html_path} e {pizza_img_path}")
@@ -155,7 +159,7 @@ def rf_graficos_desempenho_brooklyn_nets(
         radar_away_csv_path = os.path.join(csv_output_dir, "rf8_radar_fora_media.csv")
 
         fig_radar_away.write_html(radar_away_html_path)
-        fig_radar_away.write_image(radar_away_img_path, format="jpg", engine="orca")
+        fig_radar_away.write_image(radar_away_img_path, format="jpg", engine=engine_image)
         away_media.to_csv(radar_away_csv_path, index=False)
 
         print(f"Radar (Fora - Média) salvo em {radar_away_html_path} e {radar_away_img_path}")
@@ -189,7 +193,7 @@ def rf_graficos_desempenho_brooklyn_nets(
         radar_home_csv_path = os.path.join(csv_output_dir, "rf8_radar_casa_media.csv")
 
         fig_radar_home.write_html(radar_home_html_path)
-        fig_radar_home.write_image(radar_home_img_path, format="jpg", engine="orca")
+        fig_radar_home.write_image(radar_home_img_path, format="jpg", engine=engine_image)
         home_media.to_csv(radar_home_csv_path, index=False)
 
         print(f"Radar (Casa - Média) salvo em {radar_home_html_path} e {radar_home_img_path}")
@@ -236,7 +240,7 @@ def rf_graficos_desempenho_brooklyn_nets(
         line_csv_path = os.path.join(csv_output_dir, f"rf8_linha_seq_{season}.csv")
 
         fig_line.write_html(line_html_path)
-        fig_line.write_image(line_img_path, format="jpg", engine="orca")
+        fig_line.write_image(line_img_path, format="jpg", engine=engine_image)
         season_data.to_csv(line_csv_path, index=False)
         print(f"Gráfico de Linha para {season} salvo em {line_html_path} e {line_img_path}")
 
@@ -281,7 +285,7 @@ def rf_graficos_desempenho_brooklyn_nets(
     scatter_csv_path = os.path.join(csv_output_dir, "rf8_scatter_media_pontos.csv")
 
     fig_scatter.write_html(scatter_html_path)
-    fig_scatter.write_image(scatter_img_path, format="jpg", engine="orca")
+    fig_scatter.write_image(scatter_img_path, format="jpg", engine=engine_image)
     scatter_data.to_csv(scatter_csv_path, index=False)
     print(f"Gráfico de Dispersão salvo em {scatter_html_path} e {scatter_img_path}")
 
@@ -331,7 +335,7 @@ def rf_graficos_desempenho_brooklyn_nets(
 
     # Salva o gráfico e os dados
     fig_stats.write_html(stats_html_path)
-    fig_stats.write_image(stats_img_path, format="jpg", engine="orca")
+    fig_stats.write_image(stats_img_path, format="jpg", engine=engine_image)
     stats_aggregated.to_csv(stats_csv_path, index=False)
 
     print(f"Gráfico de Barras para Estatísticas Específicas salvo em {stats_html_path} e {stats_img_path}")
@@ -440,12 +444,9 @@ def rf_graficos_desempenho_brooklyn_nets(
     details_csv_path = os.path.join(csv_output_dir, "rf8_scatter_detalhes_jogos RF07.csv")
 
     fig_details.write_html(details_html_path)
-    fig_details.write_image(details_img_path, format="jpg", engine="orca")
+    fig_details.write_image(details_img_path, format="jpg", engine=engine_image)
     all_seasons_data.to_csv(details_csv_path, index=False)
 
     print(f"Gráfico de Dispersão dos Jogos salvo em {details_html_path} e {details_img_path}")
 
     print("✅ Todos os gráficos e arquivos CSV foram gerados com sucesso!")
-
-# Para executar a função, descomente a linha abaixo:
-# rf_graficos_desempenho_brooklyn_nets()
