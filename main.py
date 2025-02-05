@@ -17,6 +17,7 @@ from src.rf.parte2.parte2_rf8 import calcular_e_apresentar_desvios
 from src.rf.parte2.parte2_rf9 import apresentar_totais_carreira
 from src.rf.parte2.parte2_rf10 import comparar_estatisticas
 from src.rf.parte3.parte3_rf1 import aplicar_metodo_gumbel
+from src.rf.parte3.parte3_rf2 import visualizando_metodo_gumbel
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -227,5 +228,24 @@ valores_z = {
 cam = aplicar_metodo_gumbel(df_cam_thomas, valores_x)
 camerom = aplicar_metodo_gumbel(df_cameron_johnson, valores_y)
 dangelo = aplicar_metodo_gumbel(df_dangelo_russell, valores_z)
+
+# Parte 3 RF2: Apresente gráficos que facilitem a visualização dos extremos e das  respostas as perguntas realizadas no RF1. Use gráficos do seu interesse. 
+print("Executando P3-RF2: Apresentando os gráficos referentes aos resultados obitidos da Parte3-RF1...")
+visualizando_metodo_gumbel(
+    cam,
+    "Cam Thomas",
+    output_dir="./reports/graficos/parte3/parte3-rf2"
+)
+visualizando_metodo_gumbel(
+    camerom,
+    "Cameron Johnson",
+    output_dir="./reports/graficos/parte3/parte3-rf2"
+)
+visualizando_metodo_gumbel(
+    dangelo,
+    "D'Angelo Russell",
+    output_dir="./reports/graficos/parte3/parte3-rf2"
+)
+
 
 print("Processamento concluído.")
