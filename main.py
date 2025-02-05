@@ -98,7 +98,7 @@ print("Executando RF8: Gerar gráficos de desempenho do Brooklyn Nets...")
 rf_graficos_desempenho_brooklyn_nets(
     team_id=1610612751,  # ID do Brooklyn Nets
     seasons=["2023-24", "2024-25"],  # Temporadas para coletar dados
-    output_dir="reports/graficos/parte1"  # Diretório para salvar os gráficos gerados
+    html_output_dir="reports/html/parte1"  # Diretório para salvar os gráficos gerados
 )
 
 print("RF8 concluído: Gráficos gerados com sucesso.")
