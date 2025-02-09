@@ -18,7 +18,8 @@ from src.rf.parte2.parte2_rf9 import apresentar_totais_carreira
 from src.rf.parte2.parte2_rf10 import comparar_estatisticas
 from src.rf.parte3.parte3_rf1 import aplicar_metodo_gumbel
 from src.rf.parte3.parte3_rf2 import visualizando_metodo_gumbel
-from src.rf.parte3.parte3_rf3 import analisar_regressao_linear, salvar_resultados
+from src.rf.parte3.parte3_rf3 import analisar_regressao_linear
+from src.rf.parte3.parte3_rf4 import graficos_regressao_linear
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -242,5 +243,13 @@ visualizando_metodo_gumbel(
     "D'Angelo Russell",
     output_dir="./reports/graficos/parte3/parte3-rf2"
 )
+
+# Parte 03 RF3: Analisar regressão linear
+print("Executando RF3: Analisar regressão linear...")
+analisar_regressao_linear()
+
+# Parte 03 RF4: Gerar gráficos que facilitam a interpretação das previsões (matriz de confusão, curva ROC, coeficientes, etc.)
+print("Executando RF4: Gerar gráficos de regressão linear...")
+graficos_regressao_linear()
 
 print("Processamento concluído.")
