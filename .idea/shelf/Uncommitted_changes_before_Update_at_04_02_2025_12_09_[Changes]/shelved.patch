@@ -1,0 +1,190 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># import relatorio\r\n\r\nfrom src.rf.parte1.parte1_rf1 import listar_times_conferencia\r\nfrom src.rf.parte1.parte1_rf2 import apresentar_classificacao_atual\r\nfrom src.rf.parte1.parte1_rf3 import calcular_vitorias_derrotas_por_temporada\r\nfrom src.rf.parte1.parte1_rf4 import calcular_totais_do_time\r\nfrom src.rf.parte1.parte1_rf5 import apresentar_dados_divididos\r\nfrom src.rf.parte1.parte1_rf6 import apresentar_performance_defensiva\r\nfrom src.rf.parte1.parte1_rf7 import apresentar_jogos_do_time\r\nfrom src.rf.parte1.parte1_rf8 import rf_graficos_desempenho_brooklyn_nets\r\nfrom src.rf.parte2.parte2_rf1 import apresentar_dados_jogadores\r\nfrom src.rf.parte2.parte2_rf2 import apresentar_dados_partidas_time_por_id\r\nfrom src.rf.parte2.parte2_rf3 import apresentar_dados_partidas_contra_time\r\nfrom src.rf.parte2.parte2_rf4 import apresentar_dados_jogos_casa_fora\r\nfrom src.rf.parte2.parte2_rf5 import calcular_e_apresentar_medias\r\nfrom src.rf.parte2.parte2_rf6 import calcular_e_apresentar_medianas\r\nfrom src.rf.parte2.parte2_rf7 import calcular_e_apresentar_modas\r\nfrom src.rf.parte2.parte2_rf8 import calcular_e_apresentar_desvios\r\nfrom src.rf.parte2.parte2_rf9 import apresentar_totais_carreira\r\nfrom src.rf.parte2.parte2_rf10 import comparar_estatisticas\r\nfrom src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar\r\nfrom src.data.coleta_dados import coletar_dados_time\r\n\r\nimport pandas as pd\r\nimport os\r\nimport pdfkit\r\n\r\n# Configurações do projeto\r\nteam_id = 1610612751  # ID do Brooklyn Nets\r\nteam_abbr = \"BRK\"  # Abreviação do Brooklyn Nets\r\nseasons = [\"2023-24\", \"2024-25\"]\r\noutput_dir = \"reports/arquivos_csv\"\r\nhtml_dir = \"reports/html\"\r\nimg_dir = \"reports/imagens\"\r\n\r\n# Criar diretórios de saída\r\nos.makedirs(output_dir, exist_ok=True)\r\nos.makedirs(html_dir, exist_ok=True)\r\nos.makedirs(img_dir, exist_ok=True)\r\n\r\nplayer_names = [\"Cam Thomas\", \"Cameron Johnson\", \"D'Angelo Russell\"]\r\n\r\nplayers = [\r\n    {'PLAYER': 'Cam Thomas', 'PLAYER_ID': 1630560},\r\n    {'PLAYER': 'Cameron Johnson', 'PLAYER_ID': 1629661},\r\n    {'PLAYER': 'D\\'Angelo Russell', 'PLAYER_ID': 1626156}\r\n]\r\n\r\n# Parte 01 RF1: Listar times por conferência\r\nprint(\"Executando RF1: Listar times por conferência...\")\r\nlistar_times_conferencia(\"reports/imagens/parte1/parte1\", \"reports/html/parte1\", \"reports/imagens/parte1\")\r\n\r\n# Parte 01 RF2: Apresentar classificação atual\r\nprint(\"Executando RF2: Apresentar classificação atual dos times...\")\r\napresentar_classificacao_atual(\"reports/imagens/parte1/parte1\", \"reports/html/parte1\", \"reports/imagens/parte1\")\r\n\r\n# Parte 01 RF3: Calcular vitórias e derrotas\r\nprint(\"Executando RF3: Calcular vitórias e derrotas do time...\")\r\ncalcular_vitorias_derrotas_por_temporada(team_id, seasons, \"reports/imagens/parte1/parte1\", \"reports/imagens/parte1\")\r\n\r\n# Parte 01 RF4: Calcular totais do time\r\nprint(\"Executando RF4: Calcular totais do time por temporada...\")\r\ncalcular_totais_do_time(team_id, seasons, \"reports/imagens/parte1/parte1\", \"reports/html/parte1\", \"reports/imagens/parte1\")\r\n\r\n# Parte 01 RF5: Apresentar divisão de dados do time\r\nprint(\"Executando RF5: Divisão de dados do time...\")\r\napresentar_dados_divididos(\r\n    team_id=team_id,\r\n    seasons=seasons,\r\n    output_dir=\"reports/imagens/parte1/parte1\",\r\n    html_dir=\"reports/html/parte1\",\r\n    img_dir=\"reports/imagens/parte1\"\r\n)\r\n\r\n# Parte 01 RF6: Apresentar os dados referentes a performance defensiva do time\r\nprint(\"Executando RF6: Performance defensiva do time...\")\r\napresentar_performance_defensiva(\r\n    team_id=1610612751,\r\n    seasons=[\"2023-24\", \"2024-25\"],\r\n    output_dir=\"reports/imagens/parte1/parte1\",\r\n    html_dir=\"reports/html/parte1\",\r\n    img_dir=\"reports/imagens/parte1\"\r\n)\r\n\r\n# Parte 01 RF7: Apresentar jogos do Time\r\nprint(\"Executando RF7: Apresentar jogos do time...\")\r\n\r\n# Diretório base para saída\r\nbase_output_dir = \"reports/imagens/parte1\"\r\n\r\n# Executar o RF7 e salvar os resultados\r\ndados_nets = apresentar_jogos_do_time(team_abbr, seasons, base_output_dir)\r\n\r\n# Exibir as primeiras linhas do DataFrame processado\r\nprint(\"Dados do RF7 processados:\")\r\nprint(dados_nets.head())\r\n\r\n# Parte 1 RF8: Gráficos de desempenho do Brooklyn Nets\r\nprint(\"Executando RF8: Gerar gráficos de desempenho do Brooklyn Nets...\")\r\n\r\n# Chamada da função para gerar gráficos usando a API\r\nrf_graficos_desempenho_brooklyn_nets(\r\n    team_id=1610612751,  # ID do Brooklyn Nets\r\n    seasons=[\"2023-24\", \"2024-25\"],  # Temporadas para coletar dados\r\n    output_dir=\"reports/graficos/parte1\"  # Diretório para salvar os gráficos gerados\r\n)\r\n\r\nprint(\"RF8 concluído: Gráficos gerados com sucesso.\")\r\n\r\n# Parte 2, RF1: Apresentar os dados dos Jogadores\r\nprint(\"Executando P2-RF1: Apresentar dados dos jogadores...\")\r\napresentar_dados_jogadores(\r\n    player_names, \r\n    output_dir=\"reports/arquivos_csv/parte2/parte2-rf1\",\r\n    html_dir=\"reports/html/parte2/parte2-rf1\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf1\"\r\n)\r\n\r\n# Parte 2, RF2: Apresentar os dados de cada jogador do time\r\nprint(\"Executando P2-RF2: Apresentar dados de cada jogador do time...\")\r\napresentar_dados_partidas_time_por_id(\r\n    team_id, \r\n    output_dir=\"reports/arquivos_csv/parte2/parte2-rf2\", \r\n    html_dir=\"reports/html/parte2/parte2-rf2\", \r\n    img_dir=\"reports/imagens/parte2/parte2-rf2\"\r\n)\r\n\r\n# Parte 2, RF3: Fornecer dados da partida contra time que o usuário escolher\r\nprint(\"Executando P2-RF3: Apresentar dados da partida contra o time selecionado...\")\r\napresentar_dados_partidas_contra_time(\r\n    opponent_abbr=\"LAL\",\r\n    output_dir=\"reports/arquivos_csv/parte2/parte2-rf3\",\r\n    html_dir=\"reports/html/parte2/parte2-rf3\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf3\"\r\n)\r\n\r\n# Parte 2, RF4: Apresentar a quantidade de jogos realizados dentro e fora de casa e a quantidade de jogos dentro e fora de casa contra um determinado time [da escolha do  usuário]. \r\nprint(\"Executando P2-RF4: Apresentando jogos dentro e fora de casa dos jogadores e contra um time selecionado...\")\r\napresentar_dados_jogos_casa_fora(\r\n    opponent_abbr=\"PHI\",\r\n    output_dir=\"reports/arquivos_csv/parte2/parte2-rf4\",\r\n    html_dir=\"reports/html/parte2/parte2-rf4\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf4\"\r\n)\r\n\r\n# Parte 2, RF5: Apresentar e calcular a média de pontos, rebotes e assistências dos jogadores\r\n# Parte 2, RF5-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da média  \r\nprint(\"Executando P2-RF5: Apresentando e calculando média de pontos, rebotes e assistências dos jogadores, e também as porcentagens abaixo da média...\")\r\ncalcular_e_apresentar_medias(\r\n    players, \r\n    output_dir = \"reports/arquivos_csv/parte2/parte2-rf5\",\r\n    html_dir=\"reports/html/parte2/parte2-rf5\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf5\"\r\n)\r\n\r\n# Parte 2, RF6: Apresentar e calcular a mediana de pontos, rebotes e assistências dos jogadores. \r\n# Parte 2, RF6-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da mediana  \r\nprint(\"Executando P2-RF6: Apresentando e calculando mediana de pontos, rebotes e assistências dos jogadores, e também as porcentagens abaixo da mediana...\")\r\ncalcular_e_apresentar_medianas(\r\n    players, \r\n    output_dir = \"reports/arquivos_csv/parte2/parte2-rf6\",\r\n    html_dir=\"reports/html/parte2/parte2-rf6\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf6\"\r\n)\r\n\r\n# Parte2, RF7: Apresentar e calcular a moda de pontos, rebotes e assistências dos jogadores. Exibir a quantidade de vezes que a moda aparece para cada item. \r\n# Parte2, RF7-A: Apresentar ao usuário a porcentagem de pontos, rebotes e assistências abaixo da média.\r\nprint(\"Executando P2-RF7: Apresentando e calculando moda de pontos, rebotes e assistências dos jogadores, e também as porcentagens abaixo da média...\")\r\ncalcular_e_apresentar_modas(\r\n    players,\r\n    output_dir = \"reports/arquivos_csv/parte2/parte2-rf7\",\r\n    html_dir=\"reports/html/parte2/parte2-rf7\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf7\"\r\n)\r\n\r\n# Parte2, RF8: Apresentar o Desvio Padrão de pontos, rebotes e assistências dos jogadores.  Quanto mais próximo de zero, mais agrupado em torno da média os dados estão. \r\nprint(\"Executando P2-RF8: Apresentar o Desvio Padrão de pontos, rebotes e assistências dos jogadores...\")\r\ncalcular_e_apresentar_desvios(\r\n    players,\r\n    output_dir = \"reports/arquivos_csv/parte2/parte2-rf8\",\r\n    html_dir=\"reports/html/parte2/parte2-rf8\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf8\"\r\n)\r\n\r\n# Parte2, RF9: O sistema deve apresentar a quantidade de pontos, assistências e rebotes de toda a  carreira do jogador. \r\nprint(\"Executando P2-RF9: Apresentando a quantidade de pontos, assistências e rebotes de toda a carreira dos jogadores... \")\r\napresentar_totais_carreira(\r\n    players,\r\n    output_dir = \"reports/arquivos_csv/parte2/parte2-rf9\",\r\n    html_dir=\"reports/html/parte2/parte2-rf9\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf9\"\r\n)\r\n\r\n# Parte 2, RF10: O sistema deve apresentar a quantidade de pontos, assistências e rebotes de toda a carreira do jogador e comparada com a atual temporada.\r\n# Parte 2, RF10-A: Apresentar gráficos de desempenho dos seus jogadores [temporada atual] para compor o Dashboard do projeto.\r\nprint(\"Executando P2-RF10: Apresentando a quantidade de pontos, assistências e rebotes de toda a carreira dos jogadores e comparando com a atual, e gerando os gráficos para o Dashboard... \")\r\ncomparar_estatisticas(\r\n    players,\r\n    output_dir=\"reports/arquivos_csv/parte2/parte2-rf10\",\r\n    html_dir=\"reports/html/parte2/parte2-rf10\",\r\n    img_dir=\"reports/imagens/parte2/parte2-rf10\"\r\n)\r\n\r\nprint(\"Processamento concluído.\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision 9deeec04d6ed4bf31d2dec1b8a60dfd6a5317c84)
++++ b/main.py	(date 1738680051048)
+@@ -102,7 +102,7 @@
+ rf_graficos_desempenho_brooklyn_nets(
+     team_id=1610612751,  # ID do Brooklyn Nets
+     seasons=["2023-24", "2024-25"],  # Temporadas para coletar dados
+-    output_dir="reports/graficos/parte1"  # Diretório para salvar os gráficos gerados
++    html_output_dir="reports/html/parte1"  # Diretório para salvar os gráficos gerados
+ )
+ 
+ print("RF8 concluído: Gráficos gerados com sucesso.")
+Index: src/rf/parte1/parte1_rf8.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\r\nimport matplotlib.pyplot as plt\r\nimport numpy as np\r\nimport pandas as pd\r\nfrom nba_api.stats.endpoints import teamgamelog\r\n\r\ndef rf_graficos_desempenho_brooklyn_nets(team_id=1610612751, seasons=[\"2023-24\", \"2024-25\"], output_dir=\"reports/graficos/parte1\", csv_output_dir=\"reports/arquivos_csv/parte1/graficos_csv\"):\r\n    os.makedirs(output_dir, exist_ok=True)\r\n    os.makedirs(csv_output_dir, exist_ok=True)\r\n\r\n    def coletar_dados_temporada(team_id, season):\r\n        print(f\"Coletando dados para a temporada {season}...\")\r\n        game_log = teamgamelog.TeamGameLog(team_id=team_id, season=season).get_data_frames()[0]\r\n        game_log[\"SEASON\"] = season  # Adicionar a coluna da temporada\r\n        return game_log\r\n\r\n    all_seasons_data = pd.concat([coletar_dados_temporada(team_id, season) for season in seasons], ignore_index=True)\r\n\r\n    # Correção da coluna PTS_PA para evitar desalinhamento de dados\r\n    all_seasons_data = all_seasons_data.sort_values(by=[\"SEASON\", \"Game_ID\"], ascending=[True, False])\r\n    all_seasons_data[\"PTS_PA\"] = all_seasons_data[\"PTS\"].shift(-1)\r\n    all_seasons_data[\"PTS_PA\"] = all_seasons_data[\"PTS_PA\"].fillna(all_seasons_data[\"PTS\"].mean())\r\n\r\n    all_seasons_data[\"WINS\"] = all_seasons_data[\"WL\"].apply(lambda x: 1 if x == \"W\" else 0)\r\n    all_seasons_data[\"LOSSES\"] = all_seasons_data[\"WL\"].apply(lambda x: 1 if x == \"L\" else 0)\r\n    all_seasons_data[\"HOME_GAME\"] = all_seasons_data[\"MATCHUP\"].apply(lambda x: \"vs\" in x)\r\n\r\n    # 1. Gráfico de Barras Empilhado\r\n    print(\"Gerando Gráfico de Barras Empilhado...\")\r\n    wins_losses = all_seasons_data.groupby(\"SEASON\").agg(\r\n        total_wins=(\"WINS\", \"sum\"),\r\n        total_losses=(\"LOSSES\", \"sum\"),\r\n    ).reset_index()\r\n\r\n    fig, ax = plt.subplots(figsize=(12, 6))\r\n    x = np.arange(len(wins_losses[\"SEASON\"]))\r\n    ax.bar(x, wins_losses[\"total_wins\"], label=\"Vitórias\", color=\"green\")\r\n    ax.bar(x, wins_losses[\"total_losses\"], bottom=wins_losses[\"total_wins\"], label=\"Derrotas\", color=\"red\")\r\n\r\n    ax.set_xlabel(\"Temporada\")\r\n    ax.set_ylabel(\"Número de Jogos\")\r\n    ax.set_title(\"Vitórias e Derrotas (Empilhado)\")\r\n    ax.set_xticks(x)\r\n    ax.set_xticklabels(wins_losses[\"SEASON\"])\r\n    ax.legend()\r\n\r\n    barras_empilhado_path = os.path.join(output_dir, \"barras_empilhado_vitorias_derrotas.png\")\r\n    plt.tight_layout()\r\n    plt.savefig(barras_empilhado_path)\r\n    plt.close()\r\n    print(f\"Gráfico de Barras Empilhado salvo em {barras_empilhado_path}\")\r\n\r\n    # Salvar CSV do Gráfico de Barras Empilhado\r\n    barras_empilhado_csv_path = os.path.join(csv_output_dir, \"barras_empilhado_vitorias_derrotas.csv\")\r\n    wins_losses.to_csv(barras_empilhado_csv_path, index=False)\r\n    print(f\"CSV do Gráfico de Barras Empilhado salvo em {barras_empilhado_csv_path}\")\r\n\r\n    # 2. Gráficos de Pizza\r\n    print(\"Gerando Gráficos de Pizza...\")\r\n    for season in seasons:\r\n        season_data = all_seasons_data[all_seasons_data[\"SEASON\"] == season]\r\n        total_home_wins = season_data.loc[season_data[\"HOME_GAME\"], \"WINS\"].sum()\r\n        total_away_wins = season_data.loc[~season_data[\"HOME_GAME\"], \"WINS\"].sum()\r\n        total_home_losses = season_data.loc[season_data[\"HOME_GAME\"], \"LOSSES\"].sum()\r\n        total_away_losses = season_data.loc[~season_data[\"HOME_GAME\"], \"LOSSES\"].sum()\r\n\r\n        labels = [\"Vitórias em Casa\", \"Vitórias Fora\", \"Derrotas em Casa\", \"Derrotas Fora\"]\r\n        values = [total_home_wins, total_away_wins, total_home_losses, total_away_losses]\r\n        colors = [\"green\", \"blue\", \"red\", \"brown\"]\r\n\r\n        fig, ax = plt.subplots(figsize=(8, 8))\r\n        ax.pie(values, labels=labels, autopct=\"%1.1f%%\", startangle=90, colors=colors)\r\n        ax.set_title(f\"Percentual de Vitórias e Derrotas ({season})\")\r\n\r\n        pizza_path = os.path.join(output_dir, f\"pizza_vitorias_derrotas_{season}.png\")\r\n        plt.savefig(pizza_path)\r\n        plt.close()\r\n        print(f\"Gráfico de Pizza salvo para a temporada {season} em {pizza_path}\")\r\n\r\n        # Salvar CSV do Gráfico de Pizza\r\n        pizza_csv_data = pd.DataFrame({\r\n            \"Categoria\": labels,\r\n            \"Frequência\": values\r\n        })\r\n        pizza_csv_path = os.path.join(csv_output_dir, f\"grafico_pizza_{season}.csv\")\r\n        pizza_csv_data.to_csv(pizza_csv_path, index=False)\r\n        print(f\"CSV do Gráfico de Pizza ({season}) salvo em {pizza_csv_path}\")\r\n\r\n    # 3. Gráfico de Radar\r\n    print(\"Gerando Gráfico de Radar...\")\r\n    radar_data = all_seasons_data.groupby(\"HOME_GAME\").agg(\r\n        avg_points=(\"PTS\", \"mean\"),\r\n        avg_points_allowed=(\"PTS_PA\", \"mean\"),\r\n    ).reset_index()\r\n\r\n    if radar_data.empty or radar_data.isnull().values.any():\r\n        print(\"Erro: Dados insuficientes ou inconsistentes para criar o gráfico de radar.\")\r\n        return\r\n\r\n    categories = [\"Pontos Marcados\", \"Pontos Sofridos\"]\r\n    values_home = radar_data[radar_data[\"HOME_GAME\"] == True][[\"avg_points\", \"avg_points_allowed\"]].values.flatten().tolist()\r\n    values_away = radar_data[radar_data[\"HOME_GAME\"] == False][[\"avg_points\", \"avg_points_allowed\"]].values.flatten().tolist()\r\n\r\n    values_home += values_home[:1]\r\n    values_away += values_away[:1]\r\n    angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()\r\n    angles += angles[:1]\r\n\r\n    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))\r\n    ax.plot(angles, values_home, label=\"Casa\", color=\"green\", linewidth=2)\r\n    ax.fill(angles, values_home, color=\"green\", alpha=0.25)\r\n    ax.plot(angles, values_away, label=\"Fora\", color=\"blue\", linewidth=2)\r\n    ax.fill(angles, values_away, color=\"blue\", alpha=0.25)\r\n\r\n    ax.set_title(\"Média de Pontos Marcados e Sofridos (Casa e Fora)\", size=15, weight=\"bold\", pad=20)\r\n    ax.set_yticks([])\r\n    ax.set_xticks(angles[:-1])\r\n    ax.set_xticklabels(categories, fontsize=12)\r\n    ax.legend(loc=\"upper right\", bbox_to_anchor=(1.1, 1.1))\r\n\r\n    radar_path = os.path.join(output_dir, \"grafico_radar_pontos.png\")\r\n    plt.savefig(radar_path)\r\n    plt.close()\r\n    print(f\"Gráfico de Radar salvo em {radar_path}\")\r\n\r\n    # Salvar CSV do Gráfico de Radar\r\n    radar_csv_path = os.path.join(csv_output_dir, \"grafico_radar_pontos.csv\")\r\n    radar_data.to_csv(radar_csv_path, index=False)\r\n    print(f\"CSV do Gráfico de Radar salvo em {radar_csv_path}\")\r\n\r\n    print(\"Todos os gráficos e arquivos CSV foram gerados com sucesso!\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/rf/parte1/parte1_rf8.py b/src/rf/parte1/parte1_rf8.py
+--- a/src/rf/parte1/parte1_rf8.py	(revision 9deeec04d6ed4bf31d2dec1b8a60dfd6a5317c84)
++++ b/src/rf/parte1/parte1_rf8.py	(date 1738680963120)
+@@ -1,22 +1,27 @@
+ import os
+-import matplotlib.pyplot as plt
+-import numpy as np
++import plotly.graph_objects as go
+ import pandas as pd
+ from nba_api.stats.endpoints import teamgamelog
+ 
+-def rf_graficos_desempenho_brooklyn_nets(team_id=1610612751, seasons=["2023-24", "2024-25"], output_dir="reports/graficos/parte1", csv_output_dir="reports/arquivos_csv/parte1/graficos_csv"):
+-    os.makedirs(output_dir, exist_ok=True)
++def rf_graficos_desempenho_brooklyn_nets(
++        team_id=1610612751,
++        seasons=["2023-24", "2024-25"],
++        html_output_dir="reports/html/parte1",
++        csv_output_dir="reports/arquivos_csv/parte1",
++        img_output_dir="reports/imagens/parte1"
++):
++    os.makedirs(html_output_dir, exist_ok=True)
+     os.makedirs(csv_output_dir, exist_ok=True)
++    os.makedirs(img_output_dir, exist_ok=True)
+ 
+     def coletar_dados_temporada(team_id, season):
+         print(f"Coletando dados para a temporada {season}...")
+         game_log = teamgamelog.TeamGameLog(team_id=team_id, season=season).get_data_frames()[0]
+-        game_log["SEASON"] = season  # Adicionar a coluna da temporada
++        game_log["SEASON"] = season
+         return game_log
+ 
+     all_seasons_data = pd.concat([coletar_dados_temporada(team_id, season) for season in seasons], ignore_index=True)
+ 
+-    # Correção da coluna PTS_PA para evitar desalinhamento de dados
+     all_seasons_data = all_seasons_data.sort_values(by=["SEASON", "Game_ID"], ascending=[True, False])
+     all_seasons_data["PTS_PA"] = all_seasons_data["PTS"].shift(-1)
+     all_seasons_data["PTS_PA"] = all_seasons_data["PTS_PA"].fillna(all_seasons_data["PTS"].mean())
+@@ -32,28 +37,22 @@
+         total_losses=("LOSSES", "sum"),
+     ).reset_index()
+ 
+-    fig, ax = plt.subplots(figsize=(12, 6))
+-    x = np.arange(len(wins_losses["SEASON"]))
+-    ax.bar(x, wins_losses["total_wins"], label="Vitórias", color="green")
+-    ax.bar(x, wins_losses["total_losses"], bottom=wins_losses["total_wins"], label="Derrotas", color="red")
++    fig = go.Figure()
++    fig.add_trace(go.Bar(x=wins_losses["SEASON"], y=wins_losses["total_wins"], name="Vitórias", marker_color="green"))
++    fig.add_trace(go.Bar(x=wins_losses["SEASON"], y=wins_losses["total_losses"], name="Derrotas", marker_color="red"))
+ 
+-    ax.set_xlabel("Temporada")
+-    ax.set_ylabel("Número de Jogos")
+-    ax.set_title("Vitórias e Derrotas (Empilhado)")
+-    ax.set_xticks(x)
+-    ax.set_xticklabels(wins_losses["SEASON"])
+-    ax.legend()
++    fig.update_layout(title="Vitórias e Derrotas (Empilhado)", xaxis_title="Temporada", yaxis_title="Número de Jogos", barmode="stack")
+ 
+-    barras_empilhado_path = os.path.join(output_dir, "barras_empilhado_vitorias_derrotas.png")
+-    plt.tight_layout()
+-    plt.savefig(barras_empilhado_path)
+-    plt.close()
+-    print(f"Gráfico de Barras Empilhado salvo em {barras_empilhado_path}")
++    barras_html_path = os.path.join(html_output_dir, "rf8_barras_empilhado_vitorias_derrotas.html")
++    barras_img_path = os.path.join(img_output_dir, "rf8_barras_empilhado_vitorias_derrotas.jpg")
++    barras_csv_path = os.path.join(csv_output_dir, "rf8_barras_empilhado_vitorias_derrotas.csv")
+ 
+-    # Salvar CSV do Gráfico de Barras Empilhado
+-    barras_empilhado_csv_path = os.path.join(csv_output_dir, "barras_empilhado_vitorias_derrotas.csv")
+-    wins_losses.to_csv(barras_empilhado_csv_path, index=False)
+-    print(f"CSV do Gráfico de Barras Empilhado salvo em {barras_empilhado_csv_path}")
++    fig.write_html(barras_html_path)
++    fig.write_image(barras_img_path, format="jpg", engine="orca")
++    wins_losses.to_csv(barras_csv_path, index=False)
++
++    print(f"Gráficos salvo em {barras_html_path} e {barras_img_path}")
++    print(f"CSV salvo em {barras_csv_path}")
+ 
+     # 2. Gráficos de Pizza
+     print("Gerando Gráficos de Pizza...")
+@@ -66,25 +65,20 @@
+ 
+         labels = ["Vitórias em Casa", "Vitórias Fora", "Derrotas em Casa", "Derrotas Fora"]
+         values = [total_home_wins, total_away_wins, total_home_losses, total_away_losses]
+-        colors = ["green", "blue", "red", "brown"]
+ 
+-        fig, ax = plt.subplots(figsize=(8, 8))
+-        ax.pie(values, labels=labels, autopct="%1.1f%%", startangle=90, colors=colors)
+-        ax.set_title(f"Percentual de Vitórias e Derrotas ({season})")
++        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=0.4)])
++        fig.update_layout(title=f"rf8_Percentual de Vitórias e Derrotas ({season})")
+ 
+-        pizza_path = os.path.join(output_dir, f"pizza_vitorias_derrotas_{season}.png")
+-        plt.savefig(pizza_path)
+-        plt.close()
+-        print(f"Gráfico de Pizza salvo para a temporada {season} em {pizza_path}")
++        pizza_html_path = os.path.join(html_output_dir, f"rf8_pizza_vitorias_derrotas_{season}.html")
++        pizza_img_path = os.path.join(img_output_dir, f"rf8_pizza_vitorias_derrotas_{season}.jpg")
++        pizza_csv_path = os.path.join(csv_output_dir, f"rf8_grafico_pizza_{season}.csv")
+ 
+-        # Salvar CSV do Gráfico de Pizza
+-        pizza_csv_data = pd.DataFrame({
+-            "Categoria": labels,
+-            "Frequência": values
+-        })
+-        pizza_csv_path = os.path.join(csv_output_dir, f"grafico_pizza_{season}.csv")
+-        pizza_csv_data.to_csv(pizza_csv_path, index=False)
+-        print(f"CSV do Gráfico de Pizza ({season}) salvo em {pizza_csv_path}")
++        fig.write_html(pizza_html_path)
++        fig.write_image(pizza_img_path, format="jpg", engine="orca")
++        pd.DataFrame({"Categoria": labels, "Frequência": values}).to_csv(pizza_csv_path, index=False)
++
++        print(f"Gráficos salvo para {season} em {pizza_html_path} e {pizza_img_path}")
++        print(f"CSV salvo em {pizza_csv_path}")
+ 
+     # 3. Gráfico de Radar
+     print("Gerando Gráfico de Radar...")
+@@ -101,31 +95,24 @@
+     values_home = radar_data[radar_data["HOME_GAME"] == True][["avg_points", "avg_points_allowed"]].values.flatten().tolist()
+     values_away = radar_data[radar_data["HOME_GAME"] == False][["avg_points", "avg_points_allowed"]].values.flatten().tolist()
+ 
+-    values_home += values_home[:1]
+-    values_away += values_away[:1]
+-    angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()
+-    angles += angles[:1]
++    values_home.append(values_home[0])
++    values_away.append(values_away[0])
+ 
+-    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+-    ax.plot(angles, values_home, label="Casa", color="green", linewidth=2)
+-    ax.fill(angles, values_home, color="green", alpha=0.25)
+-    ax.plot(angles, values_away, label="Fora", color="blue", linewidth=2)
+-    ax.fill(angles, values_away, color="blue", alpha=0.25)
++    fig = go.Figure()
++    fig.add_trace(go.Scatterpolar(r=values_home, theta=categories + [categories[0]], fill="toself", name="Casa", line_color="green"))
++    fig.add_trace(go.Scatterpolar(r=values_away, theta=categories + [categories[0]], fill="toself", name="Fora", line_color="blue"))
+ 
+-    ax.set_title("Média de Pontos Marcados e Sofridos (Casa e Fora)", size=15, weight="bold", pad=20)
+-    ax.set_yticks([])
+-    ax.set_xticks(angles[:-1])
+-    ax.set_xticklabels(categories, fontsize=12)
+-    ax.legend(loc="upper right", bbox_to_anchor=(1.1, 1.1))
++    fig.update_layout(title="Média de Pontos Marcados e Sofridos (Casa e Fora)", polar=dict(radialaxis=dict(visible=True)))
+ 
+-    radar_path = os.path.join(output_dir, "grafico_radar_pontos.png")
+-    plt.savefig(radar_path)
+-    plt.close()
+-    print(f"Gráfico de Radar salvo em {radar_path}")
++    radar_html_path = os.path.join(html_output_dir, "rf8_grafico_radar_pontos.html")
++    radar_img_path = os.path.join(img_output_dir, "rf8_grafico_radar_pontos.jpg")
++    radar_csv_path = os.path.join(csv_output_dir, "rf8_grafico_radar_pontos.csv")
+ 
+-    # Salvar CSV do Gráfico de Radar
+-    radar_csv_path = os.path.join(csv_output_dir, "grafico_radar_pontos.csv")
++    fig.write_html(radar_html_path)
++    fig.write_image(radar_img_path, format="jpg", engine="orca")
+     radar_data.to_csv(radar_csv_path, index=False)
+-    print(f"CSV do Gráfico de Radar salvo em {radar_csv_path}")
+ 
+-    print("Todos os gráficos e arquivos CSV foram gerados com sucesso!")
+\ No newline at end of file
++    print(f"Gráficos salvo em {radar_html_path} e {radar_img_path}")
++    print(f"CSV salvo em {radar_csv_path}")
++
++    print("✅ Todos os gráficos e arquivos CSV foram gerados com sucesso!")

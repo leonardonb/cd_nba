@@ -1,0 +1,428 @@
+Index: src/main_old.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main_old.py b/src/main_old.py
+new file mode 100644
+--- /dev/null	(date 1737184269297)
++++ b/src/main_old.py	(date 1737184269297)
+@@ -0,0 +1,417 @@
++from src.data.extracao_dados import extrair_dados_time, extrair_dados_jogadores, preencher_placares_faltantes
++from src.data.limpeza_transformacao import (
++    verificar_dados_ausentes,
++    remover_colunas_irrelevantes,
++    normalizar_valores,
++    tratar_outliers,
++    remover_duplicatas,
++    separar_treino_teste,
++)
++import pandas as pd
++import os
++import matplotlib.pyplot as plt
++import seaborn as sns
++import plotly.express as px
++
++# Configurações do projeto
++time_nome = "Brooklyn Nets"
++jogadores_ids = [1629680, 201609, 1627742]  # Cam Thomas, Dennis Schroder, Cameron Johnson
++
++temporadas = ["2023-24", "2024-25"]
++
++# Criar pasta para salvar os relatórios e gráficos
++output_dir = "reports/arquivos_csv"
++graph_dir = "reports/graficos_html"
++os.makedirs(output_dir, exist_ok=True)
++os.makedirs(graph_dir, exist_ok=True)
++
++# Funções para os Requisitos Funcionais (RFs)
++def salvar_tabela_html(leste, param, param1):
++    pass
++
++def listar_times_conferencia():
++    """RF1: Listar todos os times da NBA agrupados por conferência."""
++    from nba_api.stats.static import teams
++    all_teams = pd.DataFrame(teams.get_teams())
++
++    # Mapeamento manual de conferências
++    leste_teams = [
++        "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets",
++        "Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers",
++        "Miami Heat", "Milwaukee Bucks", "New York Knicks", "Orlando Magic",
++        "Philadelphia 76ers", "Toronto Raptors", "Washington Wizards"
++    ]
++
++    oeste_teams = [
++        "Dallas Mavericks", "Denver Nuggets", "Golden State Warriors", "Houston Rockets",
++        "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Minnesota Timberwolves",
++        "New Orleans Pelicans", "Oklahoma City Thunder", "Phoenix Suns", "Portland Trail Blazers",
++        "Sacramento Kings", "San Antonio Spurs", "Utah Jazz"
++    ]
++
++    # Adicionar coluna de conferência
++    all_teams["conference"] = all_teams["full_name"].apply(
++        lambda x: "East" if x in leste_teams else "West" if x in oeste_teams else "Unknown"
++    )
++
++    # Filtrar por conferência
++    leste = all_teams[all_teams["conference"] == "East"]
++    oeste = all_teams[all_teams["conference"] == "West"]
++
++    # Salvar tabelas em HTML
++    os.makedirs(graph_dir, exist_ok=True)  # Garantir que o diretório existe
++
++    leste.to_html(os.path.join(graph_dir, "tabela_times_leste.html"), index=False)
++    oeste.to_html(os.path.join(graph_dir, "tabela_times_oeste.html"), index=False)
++
++    print(f"Tabelas salvas em: {graph_dir}")
++    return leste, oeste
++
++def listar_times_conferencia_unica():
++    """RF1: Criar uma tabela única com os times da NBA e suas conferências."""
++    from nba_api.stats.static import teams
++    all_teams = pd.DataFrame(teams.get_teams())
++
++    # Mapeamento manual de conferências
++    leste_teams = [
++        "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets",
++        "Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers",
++        "Miami Heat", "Milwaukee Bucks", "New York Knicks", "Orlando Magic",
++        "Philadelphia 76ers", "Toronto Raptors", "Washington Wizards"
++    ]
++
++    oeste_teams = [
++        "Dallas Mavericks", "Denver Nuggets", "Golden State Warriors", "Houston Rockets",
++        "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Minnesota Timberwolves",
++        "New Orleans Pelicans", "Oklahoma City Thunder", "Phoenix Suns", "Portland Trail Blazers",
++        "Sacramento Kings", "San Antonio Spurs", "Utah Jazz"
++    ]
++
++    # Adicionar coluna de conferência
++    all_teams["conference"] = all_teams["full_name"].apply(
++        lambda x: "East" if x in leste_teams else "West" if x in oeste_teams else "Unknown"
++    )
++
++    # Garantir que o diretório exista
++    os.makedirs(graph_dir, exist_ok=True)
++
++    # Caminho para salvar a tabela
++    tabela_unica_path = os.path.abspath(os.path.join(graph_dir, "tabela_times_unica.html"))
++
++    print(f"Salvando tabela em: {tabela_unica_path}")
++
++    try:
++        # Salvar a tabela como HTML
++        all_teams.to_html(tabela_unica_path, index=False)
++    except Exception as e:
++        print(f"Erro ao salvar a tabela única: {e}")
++
++    # Confirmar existência do arquivo após salvamento
++    if os.path.exists(tabela_unica_path):
++        print(f"O arquivo foi salvo corretamente em: {tabela_unica_path}")
++    else:
++        print(f"Arquivo não encontrado! Verifique as permissões ou o caminho: {tabela_unica_path}")
++
++    # Retornar a tabela
++    return all_teams
++
++def apresentar_classificacao_atual():
++    """RF2: Apresentar a classificação atual dos times agrupados por conferência."""
++    from nba_api.stats.endpoints import leaguestandings
++
++    # Obter a classificação atual
++    standings = leaguestandings.LeagueStandings(season=temporadas[-1]).get_data_frames()[0]
++
++    # Criar o nome completo do time para mapeamento
++    standings["FullTeamName"] = standings["TeamCity"] + " " + standings["TeamName"]
++
++    # Diagnóstico: Exibir os nomes completos gerados
++    print("Nomes completos dos times:", standings["FullTeamName"].unique())
++
++    # Mapeamento manual para conferências
++    leste_teams = [
++        "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets",
++        "Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers",
++        "Miami Heat", "Milwaukee Bucks", "New York Knicks", "Orlando Magic",
++        "Philadelphia 76ers", "Toronto Raptors", "Washington Wizards"
++    ]
++
++    oeste_teams = [
++        "Dallas Mavericks", "Denver Nuggets", "Golden State Warriors", "Houston Rockets",
++        "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Minnesota Timberwolves",
++        "New Orleans Pelicans", "Oklahoma City Thunder", "Phoenix Suns", "Portland Trail Blazers",
++        "Sacramento Kings", "San Antonio Spurs", "Utah Jazz"
++    ]
++
++    # Adicionar conferência manualmente
++    standings["Conference"] = standings["FullTeamName"].apply(
++        lambda x: "Leste" if x in leste_teams else "Oeste" if x in oeste_teams else "Desconhecido"
++    )
++
++    # Diagnóstico: Verificar os dados após mapeamento
++    print("Times classificados como Leste:")
++    print(standings[standings["Conference"] == "Leste"])
++    print("Times classificados como Oeste:")
++    print(standings[standings["Conference"] == "Oeste"])
++    print("Times classificados como Desconhecido:")
++    print(standings[standings["Conference"] == "Desconhecido"])
++
++    # Dividir por conferência
++    leste = standings[standings["Conference"] == "Leste"]
++    oeste = standings[standings["Conference"] == "Oeste"]
++
++    # Garantir que o diretório exista
++    os.makedirs(graph_dir, exist_ok=True)
++
++    # Salvar as tabelas
++    leste.to_html(os.path.join(graph_dir, "classificacao_conferencia_leste.html"), index=False)
++    oeste.to_html(os.path.join(graph_dir, "classificacao_conferencia_oeste.html"), index=False)
++
++    print(f"Tabelas salvas em: {graph_dir}")
++
++    return leste, oeste
++
++def apresentar_classificacao_atual_unificada():
++    """RF2: Apresentar a classificação atual dos times em uma única tabela agrupados por conferência e classificação."""
++    from nba_api.stats.endpoints import leaguestandings
++
++    # Obter a classificação atual
++    standings = leaguestandings.LeagueStandings(season=temporadas[-1]).get_data_frames()[0]
++
++    # Criar o nome completo do time para mapeamento
++    standings["FullTeamName"] = standings["TeamCity"] + " " + standings["TeamName"]
++
++    # Diagnóstico: Verificar LeagueRank
++    print("Valores únicos em LeagueRank:", standings["LeagueRank"].unique())
++
++    # Corrigir LeagueRank manualmente, se necessário
++    if standings["LeagueRank"].isna().any():
++        print("LeagueRank não está preenchido. Calculando classificação com base em WinPCT.")
++        standings = standings.sort_values(by="WinPCT", ascending=False).reset_index(drop=True)
++        standings["LeagueRank"] = standings.index + 1
++
++    # Mapeamento manual para conferências
++    leste_teams = [
++        "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets",
++        "Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers",
++        "Miami Heat", "Milwaukee Bucks", "New York Knicks", "Orlando Magic",
++        "Philadelphia 76ers", "Toronto Raptors", "Washington Wizards"
++    ]
++
++    oeste_teams = [
++        "Dallas Mavericks", "Denver Nuggets", "Golden State Warriors", "Houston Rockets",
++        "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Minnesota Timberwolves",
++        "New Orleans Pelicans", "Oklahoma City Thunder", "Phoenix Suns", "Portland Trail Blazers",
++        "Sacramento Kings", "San Antonio Spurs", "Utah Jazz"
++    ]
++
++    # Adicionar conferência manualmente
++    standings["Conference"] = standings["FullTeamName"].apply(
++        lambda x: "Leste" if x in leste_teams else "Oeste" if x in oeste_teams else "Desconhecido"
++    )
++
++    # Diagnóstico: Verificar os dados após mapeamento
++    print("Times classificados como Leste:")
++    print(standings[standings["Conference"] == "Leste"])
++    print("Times classificados como Oeste:")
++    print(standings[standings["Conference"] == "Oeste"])
++
++    # Ordenar por conferência e LeagueRank
++    standings = standings.sort_values(by=["Conference", "LeagueRank"]).reset_index(drop=True)
++
++    # Garantir que o diretório exista
++    os.makedirs(graph_dir, exist_ok=True)
++
++    # Caminho para salvar a tabela unificada
++    tabela_unificada_path = os.path.join(graph_dir, "classificacao_unificada.html")
++
++    # Salvar como HTML
++    standings.to_html(tabela_unificada_path, index=False)
++
++    print(f"Tabela unificada salva em: {tabela_unificada_path}")
++
++    return standings
++
++def calcular_vitorias_derrotas(df_times):
++    """
++    RF3: Calcular vitórias e derrotas do time escolhido e apresentá-las em uma tabela.
++
++    Args:
++        df_times (pd.DataFrame): Dados dos jogos do time.
++
++    Returns:
++        pd.DataFrame: DataFrame contendo os totais de vitórias e derrotas separadas por mandante/visitante.
++    """
++    # Filtrar partidas jogadas em casa e fora de casa
++    mandante = df_times[df_times["MATCHUP"].str.contains("vs.")]
++    visitante = df_times[df_times["MATCHUP"].str.contains("@")]
++
++    # Calcular totais
++    dados_vitorias_derrotas = {
++        "Total de Vitórias": len(df_times[df_times["WL"] == "W"]),
++        "Vitórias em Casa": len(mandante[mandante["WL"] == "W"]),
++        "Vitórias Fora de Casa": len(visitante[visitante["WL"] == "W"]),
++        "Total de Derrotas": len(df_times[df_times["WL"] == "L"]),
++        "Derrotas em Casa": len(mandante[mandante["WL"] == "L"]),
++        "Derrotas Fora de Casa": len(visitante[visitante["WL"] == "L"]),
++    }
++
++    # Converter os resultados para um DataFrame
++    df_resultados = pd.DataFrame([dados_vitorias_derrotas])
++
++    # Garantir que o diretório exista
++    os.makedirs(graph_dir, exist_ok=True)
++
++    # Salvar como HTML
++    tabela_path = os.path.join(graph_dir, "vitorias_derrotas.html")
++    df_resultados.to_html(tabela_path, index=False)
++
++    print(f"Tabela de vitórias e derrotas salva em: {tabela_path}")
++
++    return df_resultados
++
++def calcular_totais_e_derrotas(df_times_orig):
++    """
++    Calcula os totais de pontos, assistências, rebotes, cestas de 3 pontos convertidas,
++    derrotas em casa e derrotas fora de casa.
++
++    Args:
++        df_times_orig (pd.DataFrame): DataFrame original com dados não normalizados.
++
++    Returns:
++        pd.DataFrame: DataFrame com os totais solicitados.
++    """
++    # Calcular os totais
++    totais = {
++        "Total de Pontos por Jogo": df_times_orig["PTS"].sum(),
++        "Total de Assistências por Jogo": df_times_orig["AST"].sum(),
++        "Total de Rebotes por Jogo": df_times_orig["REB"].sum(),
++        "Total de Cestas de 3 Pontos Convertidas": df_times_orig["FG3M"].sum(),
++        "Derrotas em Casa": len(df_times_orig[(df_times_orig["WL"] == "L") & (df_times_orig["MATCHUP"].str.contains("vs."))]),
++        "Derrotas Fora de Casa": len(df_times_orig[(df_times_orig["WL"] == "L") & (df_times_orig["MATCHUP"].str.contains("@"))]),
++    }
++
++    # Retornar como DataFrame
++    return pd.DataFrame([totais])
++
++def calcular_detalhes_rebotes(df_times):
++    """RF5: Divisão detalhada de rebotes, cestas e lances livres."""
++    colunas_rebotes = ["REB", "OREB", "DREB", "FGM", "FG3M", "FTM"]  # FGM substitui FG2M
++    colunas_disponiveis = [col for col in colunas_rebotes if col in df_times.columns]
++
++    if not colunas_disponiveis:
++        raise ValueError("Nenhuma coluna relevante para rebotes e cestas foi encontrada no DataFrame.")
++
++    return df_times[colunas_disponiveis].agg("sum").to_dict()
++
++def calcular_performance_defensiva(df_times):
++    """RF6: Performance defensiva do time."""
++    colunas_defensivas = ["STL", "DREB", "BLK", "TO", "PF"]  # Colunas esperadas
++    colunas_disponiveis = [col for col in colunas_defensivas if col in df_times.columns]
++
++    if not colunas_disponiveis:
++        raise ValueError("Nenhuma coluna relevante para performance defensiva foi encontrada no DataFrame.")
++
++    return df_times[colunas_disponiveis].agg("sum").to_dict()
++
++def listar_jogos_time(df_times):
++    """RF7: Listar jogos do time com detalhes."""
++    return df_times[["GAME_DATE", "MATCHUP", "WL", "PTS"]]
++
++def gerar_graficos(df_times):
++    """RF8: Gerar gráficos de desempenho do time."""
++    # Gráfico de barras empilhado: vitórias e derrotas (Matplotlib)
++    plt.figure(figsize=(10, 6))
++    vit_der = df_times["WL"].value_counts()
++    vit_der.plot(kind="bar", color=["green", "red"])
++    plt.title("Vitórias e Derrotas")
++    plt.savefig(os.path.join(graph_dir, "vitorias_derrotas.png"))  # Salvar como PNG
++    plt.close()
++
++    # Gráfico interativo de pontos por jogo (Plotly)
++    fig = px.histogram(df_times, x="PTS", nbins=10, title="Distribuição de Pontos por Jogo")
++    fig.write_html(os.path.join(graph_dir, "distribuicao_pontos.html"))
++
++    print("Gráficos gerados com sucesso.")
++
++def salvar_todos_dados(df_dict):
++    """RF9: Salvar todos os dados gerados."""
++    for name, df in df_dict.items():
++        df.to_csv(os.path.join(output_dir, f"{name}.csv"), index=False)
++
++# Execução do pipeline
++print("Extraindo dados do time...")
++dados_times = [extrair_dados_time(time_nome, temporada) for temporada in temporadas]
++df_times = pd.concat(dados_times, ignore_index=True)
++
++print("Extraindo dados dos jogadores...")
++df_jogadores = extrair_dados_jogadores(jogadores_ids)
++
++print("Preenchendo placares faltantes...")
++df_placares = preencher_placares_faltantes("2024-01-01", "2024-01-31")
++
++print("Limpando e transformando dados...")
++df_times = verificar_dados_ausentes(df_times)
++df_jogadores = verificar_dados_ausentes(df_jogadores)
++colunas_irrelevantes = ["SALARY", "TEAM_ABBREVIATION"]
++df_times = remover_colunas_irrelevantes(df_times, colunas_irrelevantes)
++df_jogadores = remover_colunas_irrelevantes(df_jogadores, colunas_irrelevantes)
++df_times = tratar_outliers(df_times, ["PTS"])
++df_times = remover_duplicatas(df_times)
++df_times_orig = df_times.copy()
++df_times = normalizar_valores(df_times, ["PTS"])
++
++print("Executando RFs adicionais...")
++# RF1: Listar times por conferência
++leste, oeste = listar_times_conferencia()
++unica = listar_times_conferencia_unica()
++
++# RF2: Classificação atual
++leste, oeste = apresentar_classificacao_atual()
++classificacao_unificada = apresentar_classificacao_atual_unificada()
++
++
++# RF3: Vitórias e derrotas
++dados_vitorias_derrotas = calcular_vitorias_derrotas(df_times)
++print("Calculando vitórias e derrotas...")
++df_vitorias_derrotas = calcular_vitorias_derrotas(df_times)
++
++# Salvar o DataFrame no formato CSV para análises futuras
++df_vitorias_derrotas.to_csv(os.path.join(output_dir, "vitorias_derrotas.csv"), index=False)
++
++print("Calculando totais e derrotas do Brooklyn Nets...")
++
++# RF4: Calcular totais e derrotas do Brooklyn Nets
++df_totais_e_derrotas = calcular_totais_e_derrotas(df_times_orig)
++
++# Salvar a tabela em HTML
++totais_e_derrotas_path = os.path.join(graph_dir, "totais_e_derrotas.html")
++df_totais_e_derrotas.to_html(totais_e_derrotas_path, index=False)
++print(f"Tabela de totais e derrotas salva em: {totais_e_derrotas_path}")
++
++# RF5: Detalhes de rebotes e cestas
++detalhes_rebotes = calcular_detalhes_rebotes(df_times)
++
++# RF6: Performance defensiva
++performance_defensiva = calcular_performance_defensiva(df_times)
++
++# RF7: Listar jogos
++df_jogos = listar_jogos_time(df_times)
++
++# Salvar relatórios gerados
++print("Salvando dados gerados...")
++salvar_todos_dados({
++    "times_leste": leste,
++    "times_oeste": oeste,
++    "classificacao_unificada": classificacao_unificada,
++    "totais_e_derrotas": df_totais_e_derrotas,
++    #"totais_time": pd.DataFrame([calcular_totais_time(df_times)]),
++    "detalhes_rebotes": pd.DataFrame([calcular_detalhes_rebotes(df_times)]),
++    "performance_defensiva": pd.DataFrame([calcular_performance_defensiva(df_times)]),
++    "jogos_time": listar_jogos_time(df_times),
++})
++
++print("Gerando gráficos...")
++gerar_graficos(df_times)
++
++print("Análise concluída. Relatórios e gráficos gerados.")
+\ No newline at end of file

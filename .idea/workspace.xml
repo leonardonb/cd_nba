@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="73705b0c-ca9f-453e-ada2-da743a49b3ab" name="Changes" comment="Finalização da parte 01 com todos os gráficos gerados.">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_02_2025_12_09_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_02_2025_12_09__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_2025_23_49_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_2025_23_49__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mainteste.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/rf/parte3/parte3_rf3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rf/parte1/parte1_rf3.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rf/parte1/parte1_rf3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rf/parte1/parte1_rf4.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rf/parte1/parte1_rf4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rf/parte1/parte1_rf5.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rf/parte1/parte1_rf5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rf/parte1/parte1_rf6.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rf/parte1/parte1_rf6.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;leonardonb&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/leonardonb/cd_nba.git&quot;,
+    &quot;accountId&quot;: &quot;b77ccdd4-a4d9-4cbe-9863-8d7dd8e8552b&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2rjitazlZgPiDLgNZB25isl7DEj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.rf4_detalhes_jogos_brooklyn_nets_2024-25.html.executor": "Run",
+    "JavaScript Debug.rf4_game_log_BRK_2023-24.html.executor": "Run",
+    "JavaScript Debug.rf4_game_log_BRK_2024-25.html.executor": "Run",
+    "JavaScript Debug.rf5_detalhes_jogos_brooklyn_nets_2023-24.html.executor": "Run",
+    "JavaScript Debug.rf5_detalhes_jogos_brooklyn_nets_2024-25.html.executor": "Run",
+    "JavaScript Debug.rf7_jogos_do_time.html.executor": "Run",
+    "Python.basico.executor": "Run",
+    "Python.coleta_dados.executor": "Run",
+    "Python.gerarpdf.executor": "Run",
+    "Python.graficos_estatisticas.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.mainteste.executor": "Run",
+    "Python.parte1_rf4.executor": "Run",
+    "Python.parte1_rf8.executor": "Run",
+    "Python.parte2_rf10.executor": "Run",
+    "Python.parte2_rf8.executor": "Run",
+    "Python.renomear_arquivos.executor": "Run",
+    "Python.rf1.executor": "Run",
+    "Python.rf2.executor": "Run",
+    "Python.rf3.executor": "Run",
+    "Python.rf7.executor": "Run",
+    "Python.teste.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/BCC/CG/CompGraf-01",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BCC\CD\cd_nba\reports\html\parte1" />
+      <recent name="D:\BCC\CD\cd_nba\reports\arquivos_csv\parte1" />
+      <recent name="D:\BCC\CD\cd_nba\reports\imagens\parte1" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73705b0c-ca9f-453e-ada2-da743a49b3ab" name="Changes" comment="" />
+      <created>1737079108210</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737079108210</updated>
+      <workItem from="1737079109567" duration="13687000" />
+      <workItem from="1737093911860" duration="2278000" />
+      <workItem from="1737166165232" duration="29615000" />
+      <workItem from="1737222424699" duration="4996000" />
+      <workItem from="1737227935595" duration="11054000" />
+      <workItem from="1737686868728" duration="13047000" />
+      <workItem from="1738114342454" duration="7259000" />
+      <workItem from="1738197963392" duration="7450000" />
+      <workItem from="1738285264336" duration="10499000" />
+      <workItem from="1738299223079" duration="762000" />
+      <workItem from="1738300036678" duration="423000" />
+      <workItem from="1738300483993" duration="238000" />
+      <workItem from="1738629452020" duration="16333000" />
+      <workItem from="1738647024750" duration="5868000" />
+      <workItem from="1738653132287" duration="668000" />
+      <workItem from="1738653838004" duration="274000" />
+      <workItem from="1738676781435" duration="20464000" />
+      <workItem from="1738777129510" duration="551000" />
+      <workItem from="1738778355084" duration="997000" />
+      <workItem from="1738779376013" duration="494000" />
+      <workItem from="1738809399091" duration="11667000" />
+      <workItem from="1738877104913" duration="322000" />
+      <workItem from="1738877454423" duration="6000" />
+      <workItem from="1738893474368" duration="14437000" />
+      <workItem from="1738976815636" duration="7475000" />
+      <workItem from="1739063083492" duration="11001000" />
+    </task>
+    <task id="LOCAL-00001" summary="Inclusão de dados sobre o time.">
+      <option name="closed" value="true" />
+      <created>1737096186540</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737096186540</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Início do refatoramento do código na parte 01. Deixando o Main.py mais legível.">
+      <option name="closed" value="true" />
+      <created>1737195957797</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737195957797</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Processo até o RF7 realizado e funcional">
+      <option name="closed" value="true" />
+      <created>1737241567162</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737241567162</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Início do RF8 da parte 1. Gráfico de rede a ser corrigido">
+      <option name="closed" value="true" />
+      <created>1737700041581</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737700041581</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Tentativa de avançar com o gráfico de radar.">
+      <option name="closed" value="true" />
+      <created>1738123165537</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738123165538</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Reorganização dos arquivos de saída da parte 1">
+      <option name="closed" value="true" />
+      <created>1738209385870</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738209385870</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Mudança do kaleido para o orca para geração dos gráficos.">
+      <option name="closed" value="true" />
+      <created>1738676938500</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738676938501</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Finalização da parte 01 com todos os gráficos gerados.">
+      <option name="closed" value="true" />
+      <created>1738729599688</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738729599688</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Inclusão de dados sobre o time." />
+    <MESSAGE value="Início do refatoramento do código na parte 01. Deixando o Main.py mais legível." />
+    <MESSAGE value="Processo até o RF7 realizado e funcional" />
+    <MESSAGE value="Início do RF8 da parte 1. Gráfico de rede a ser corrigido" />
+    <MESSAGE value="Tentativa de avançar com o gráfico de radar." />
+    <MESSAGE value="Reorganização dos arquivos de saída da parte 1" />
+    <MESSAGE value="Mudança do kaleido para o orca para geração dos gráficos." />
+    <MESSAGE value="Finalização da parte 01 com todos os gráficos gerados." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalização da parte 01 com todos os gráficos gerados." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cd_nba$graficos_estatisticas.coverage" NAME="graficos_estatisticas Coverage Results" MODIFIED="1737084132973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualizations" />
+    <SUITE FILE_PATH="coverage/cd_nba$teste.coverage" NAME="teste Coverage Results" MODIFIED="1737083204165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cd_nba$parte1_rf4.coverage" NAME="parte1_rf4 Coverage Results" MODIFIED="1738981237251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf/parte1" />
+    <SUITE FILE_PATH="coverage/cd_nba$main.coverage" NAME="main Coverage Results" MODIFIED="1739072956741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cd_nba$mainteste.coverage" NAME="mainteste Coverage Results" MODIFIED="1739072789876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cd_nba$rf1.coverage" NAME="rf1 Coverage Results" MODIFIED="1737186166838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf" />
+    <SUITE FILE_PATH="coverage/cd_nba$basico.coverage" NAME="basico Coverage Results" MODIFIED="1737086239772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cd_nba$rf7.coverage" NAME="rf7 Coverage Results" MODIFIED="1737237133260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf" />
+    <SUITE FILE_PATH="coverage/cd_nba$gerarpdf.coverage" NAME="gerarpdf Coverage Results" MODIFIED="1737241225007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/reports/pdf" />
+    <SUITE FILE_PATH="coverage/cd_nba$rf3.coverage" NAME="rf3 Coverage Results" MODIFIED="1737188296333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf" />
+    <SUITE FILE_PATH="coverage/cd_nba$renomear_arquivos.coverage" NAME="renomear_arquivos Coverage Results" MODIFIED="1737689012257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cd_nba$parte1_rf8.coverage" NAME="parte1_rf8 Coverage Results" MODIFIED="1738122040508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf/parte1" />
+    <SUITE FILE_PATH="coverage/cd_nba$parte2_rf10.coverage" NAME="parte2_rf10 Coverage Results" MODIFIED="1738652560179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf/parte2" />
+    <SUITE FILE_PATH="coverage/cd_nba$coleta_dados.coverage" NAME="coleta_dados Coverage Results" MODIFIED="1737227214803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/cd_nba$rf2.coverage" NAME="rf2 Coverage Results" MODIFIED="1737194488971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf" />
+    <SUITE FILE_PATH="coverage/cd_nba$parte2_rf8.coverage" NAME="parte2_rf8 Coverage Results" MODIFIED="1738810863697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf/parte2" />
+  </component>
+</project>

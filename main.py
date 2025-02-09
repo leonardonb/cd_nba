@@ -1,7 +1,7 @@
 from src.rf.parte1.parte1_rf1 import listar_times_conferencia
 from src.rf.parte1.parte1_rf2 import apresentar_classificacao_atual
-from src.rf.parte1.parte1_rf3 import calcular_vitorias_derrotas_por_temporada
-from src.rf.parte1.parte1_rf4 import calcular_totais_do_time
+from src.rf.parte1.parte1_rf3 import processar_temporadas
+from src.rf.parte1.parte1_rf4 import calcular_detalhes_jogos, salvar_resultados_rf4
 from src.rf.parte1.parte1_rf5 import apresentar_dados_divididos
 from src.rf.parte1.parte1_rf6 import apresentar_performance_defensiva
 from src.rf.parte1.parte1_rf7 import apresentar_jogos_do_time
@@ -18,6 +18,7 @@ from src.rf.parte2.parte2_rf9 import apresentar_totais_carreira
 from src.rf.parte2.parte2_rf10 import comparar_estatisticas
 from src.rf.parte3.parte3_rf1 import aplicar_metodo_gumbel
 from src.rf.parte3.parte3_rf2 import visualizando_metodo_gumbel
+from src.rf.parte3.parte3_rf3 import analisar_regressao_linear, salvar_resultados
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -56,31 +57,26 @@ apresentar_classificacao_atual("reports/imagens/parte1/parte1", "reports/html/pa
 
 # Parte 01 RF3: Calcular vitórias e derrotas
 print("Executando RF3: Calcular vitórias e derrotas do time...")
-calcular_vitorias_derrotas_por_temporada(team_id, seasons, "reports/imagens/parte1/parte1", "reports/imagens/parte1")
+processar_temporadas(team_id, seasons, "reports/imagens/parte1/parte1", "reports/imagens/parte1")
 
 # Parte 01 RF4: Calcular totais do time
-print("Executando RF4: Calcular totais do time por temporada...")
-calcular_totais_do_time(team_id, seasons, "reports/imagens/parte1/parte1", "reports/html/parte1", "reports/imagens/parte1")
+print("Executando RF4: Calcular totais do time por temporada... (Isso pode demorar um pouco).")
+# Calcula os detalhes dos jogos por temporada
+resultados = calcular_detalhes_jogos()
+
+# Para cada temporada, exibe e salva os resultados
+for temporada, df_jogos in resultados.items():
+    print(f"\nTemporada: {temporada}")
+    print(df_jogos)
+    salvar_resultados_rf4(df_jogos, temporada)
 
 # Parte 01 RF5: Apresentar divisão de dados do time
-print("Executando RF5: Divisão de dados do time...")
-apresentar_dados_divididos(
-    team_id=team_id,
-    seasons=seasons,
-    output_dir="reports/imagens/parte1/parte1",
-    html_dir="reports/html/parte1",
-    img_dir="reports/imagens/parte1"
-)
+print("Executando RF5: Divisão de dados do time...(Isso também pode demorar um pouco)")
+apresentar_dados_divididos()
 
 # Parte 01 RF6: Apresentar os dados referentes a performance defensiva do time
 print("Executando RF6: Performance defensiva do time...")
-apresentar_performance_defensiva(
-    team_id=1610612751,
-    seasons=["2023-24", "2024-25"],
-    output_dir="reports/imagens/parte1/parte1",
-    html_dir="reports/html/parte1",
-    img_dir="reports/imagens/parte1"
-)
+apresentar_performance_defensiva()
 
 # Parte 01 RF7: Apresentar jogos do Time
 print("Executando RF7: Apresentar jogos do time...")
@@ -246,6 +242,5 @@ visualizando_metodo_gumbel(
     "D'Angelo Russell",
     output_dir="./reports/graficos/parte3/parte3-rf2"
 )
-
 
 print("Processamento concluído.")
