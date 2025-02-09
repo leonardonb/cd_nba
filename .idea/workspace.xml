@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73705b0c-ca9f-453e-ada2-da743a49b3ab" name="Changes" comment="Finalização da parte 01 com todos os gráficos gerados.">
       <change afterPath="$PROJECT_DIR$/mainteste.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rf/parte3/parte3_rf3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rf/parte3/parte3_rf4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/rf/parte3/parte3_rf7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/rf/parte3/parte3_rf8.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -55,6 +55,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -88,6 +91,18 @@
     "JavaScript Debug.rf5_detalhes_jogos_brooklyn_nets_2023-24.html.executor": "Run",
     "JavaScript Debug.rf5_detalhes_jogos_brooklyn_nets_2024-25.html.executor": "Run",
     "JavaScript Debug.rf7_jogos_do_time.html.executor": "Run",
+    "JavaScript Debug.rf7_predictions.html.executor": "Run",
+    "JavaScript Debug.rf8_coef_Cameron_Johnson_points_poisson_data.html.executor": "Run",
+    "JavaScript Debug.rf8_coef_D'Angelo_Russell_rebounds_poisson.html.executor": "Run",
+    "JavaScript Debug.rf8_confusion_Cam_Thomas_assists.html.executor": "Run",
+    "JavaScript Debug.rf8_predictions.html.executor": "Run",
+    "JavaScript Debug.rf8_prob_Cameron_Johnson_assists.html.executor": "Run",
+    "JavaScript Debug.rf8_prob_D'Angelo_Russell_points.html.executor": "Run",
+    "JavaScript Debug.rf8_prob_D'Angelo_Russell_rebounds.html.executor": "Run",
+    "JavaScript Debug.rf8_roc_Cam_Thomas_assists.html.executor": "Run",
+    "JavaScript Debug.rf8_roc_D'Angelo_Russell_assists.html.executor": "Run",
+    "JavaScript Debug.rf8_roc_D'Angelo_Russell_points.html.executor": "Run",
+    "JavaScript Debug.rf8_roc_D'Angelo_Russell_rebounds.html.executor": "Run",
     "Python.basico.executor": "Run",
     "Python.coleta_dados.executor": "Run",
     "Python.gerarpdf.executor": "Run",
@@ -173,6 +188,8 @@
       <workItem from="1738893474368" duration="14437000" />
       <workItem from="1738976815636" duration="7475000" />
       <workItem from="1739063083492" duration="18380000" />
+      <workItem from="1739111717044" duration="1527000" />
+      <workItem from="1739128172563" duration="8358000" />
     </task>
     <task id="LOCAL-00001" summary="Inclusão de dados sobre o time.">
       <option name="closed" value="true" />
@@ -275,7 +292,7 @@
     <SUITE FILE_PATH="coverage/cd_nba$teste.coverage" NAME="teste Coverage Results" MODIFIED="1737083204165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cd_nba$parte1_rf4.coverage" NAME="parte1_rf4 Coverage Results" MODIFIED="1738981237251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf/parte1" />
     <SUITE FILE_PATH="coverage/cd_nba$main.coverage" NAME="main Coverage Results" MODIFIED="1739072956741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/cd_nba$mainteste.coverage" NAME="mainteste Coverage Results" MODIFIED="1739082476429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cd_nba$mainteste.coverage" NAME="mainteste Coverage Results" MODIFIED="1739136655716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cd_nba$rf1.coverage" NAME="rf1 Coverage Results" MODIFIED="1737186166838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf" />
     <SUITE FILE_PATH="coverage/cd_nba$basico.coverage" NAME="basico Coverage Results" MODIFIED="1737086239772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cd_nba$rf7.coverage" NAME="rf7 Coverage Results" MODIFIED="1737237133260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/rf" />

@@ -20,6 +20,8 @@ from src.rf.parte3.parte3_rf1 import aplicar_metodo_gumbel
 from src.rf.parte3.parte3_rf2 import visualizando_metodo_gumbel
 from src.rf.parte3.parte3_rf3 import analisar_regressao_linear
 from src.rf.parte3.parte3_rf4 import graficos_regressao_linear
+from src.rf.parte3.parte3_rf7 import gamlss_brooklyn_nets
+from src.rf.parte3.parte3_rf8 import graficos_gamglss_nets
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -251,5 +253,13 @@ analisar_regressao_linear()
 # Parte 03 RF4: Gerar gráficos que facilitam a interpretação das previsões (matriz de confusão, curva ROC, coeficientes, etc.)
 print("Executando RF4: Gerar gráficos de regressão linear...")
 graficos_regressao_linear()
+
+# Parte 03 RF7: Preveja uma quantidade X através de GAMLSS
+print("Executando RF7: Fazendo previsão através de GAMLSS...")
+gamlss_brooklyn_nets()
+
+# Parte 03 RF8: Gráficos referentes a previsão através de GAMLSS
+print("Executando RF8: Fazendo gráficos de previsão através de GAMLSS...")
+graficos_gamglss_nets()
 
 print("Processamento concluído.")
