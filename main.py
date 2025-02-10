@@ -20,6 +20,7 @@ from src.rf.parte3.parte3_rf1 import aplicar_metodo_gumbel
 from src.rf.parte3.parte3_rf2 import visualizando_metodo_gumbel
 from src.rf.parte3.parte3_rf3 import analisar_regressao_linear
 from src.rf.parte3.parte3_rf4 import graficos_regressao_linear
+from src.rf.parte3.parte3_rf5_rf6 import analisar_regressao_logistica_graficos
 from src.rf.parte3.parte3_rf7 import gamlss_brooklyn_nets
 from src.rf.parte3.parte3_rf8 import graficos_gamglss_nets
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
@@ -69,8 +70,6 @@ resultados = calcular_detalhes_jogos()
 
 # Para cada temporada, exibe e salva os resultados
 for temporada, df_jogos in resultados.items():
-    print(f"\nTemporada: {temporada}")
-    print(df_jogos)
     salvar_resultados_rf4(df_jogos, temporada)
 
 # Parte 01 RF5: Apresentar divisão de dados do time
@@ -254,6 +253,12 @@ analisar_regressao_linear()
 print("Executando RF4: Gerar gráficos de regressão linear...")
 graficos_regressao_linear()
 
+# Parte 03 RF5/RF6: • Regressão Logística: variável alvo 
+# RF5 – Possível uso de variáveis independentes: tempo que o jogador passou em  quadra, arremessos tentados e turnovers. Variáveis dependentes, pontos,  assistências e rebotes. Divida os dados de teste e treinamento.  
+# RF6 – Apresente gráficos que facilitem a interpretação das previsões, como  matriz de confusão, gráficos de probabilidade predita, curva roc, gráficos de  coeficientes, etc.
+print("Executando RF5 e RF6: Analisando regressão logística e gerando seus gráficos...")
+analisar_regressao_logistica_graficos()
+
 # Parte 03 RF7: Preveja uma quantidade X através de GAMLSS
 print("Executando RF7: Fazendo previsão através de GAMLSS...")
 gamlss_brooklyn_nets()
@@ -265,4 +270,4 @@ graficos_gamglss_nets()
 print("Processamento concluído.")
 
 #Chamar Dashboard
-os.system("streamlit run dashboard.py")
+#os.system("streamlit run dashboard.py")
