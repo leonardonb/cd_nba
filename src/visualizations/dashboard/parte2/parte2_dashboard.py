@@ -24,7 +24,7 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=8051)
 
 # Rode o comando a seguir para gerar a pagina html referente ao dashboard da parte 2
 # python src/visualizations/dashboard/parte2/parte2_dashboard.py

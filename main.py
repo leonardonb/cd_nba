@@ -28,6 +28,9 @@ from src.data.coleta_dados import coletar_dados_time
 
 import pandas as pd
 import os
+import subprocess
+import webbrowser
+import time
 import pdfkit
 
 # Configurações do projeto
@@ -268,3 +271,20 @@ print("Executando RF8: Fazendo gráficos de previsão através de GAMLSS...")
 graficos_gamglss_nets()
 
 print("Processamento concluído.")
+
+#Abrir Dashboards
+if __name__ == "__main__":
+    # Inicia os dois dashboards em portas diferentes
+    p1 = subprocess.Popen(["python", "src/visualizations/dashboard/parte1/parte1_dashboard.py"])
+    p2 = subprocess.Popen(["python", "src/visualizations/dashboard/parte2/parte2_dashboard.py"])
+
+    # Aguarda alguns segundos para garantir que os servidores estejam rodando
+    time.sleep(3)
+
+    # Abre automaticamente os dashboards no navegador
+    webbrowser.open("http://127.0.0.1:8050")  # Abre Parte 1
+    webbrowser.open("http://127.0.0.1:8051")  # Abre Parte 2
+
+    # Mantém os processos rodando
+    p1.wait()
+    p2.wait()
