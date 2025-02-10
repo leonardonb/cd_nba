@@ -50,8 +50,6 @@ def rf_graficos_desempenho_brooklyn_nets(
     dados_por_local["Local"] = dados_por_local["HOME_GAME"].map({True: "Casa", False: "Fora"})
     tabela_final = dados_por_local[["SEASON", "Local", "total_pontos_marcados", "total_pontos_sofridos", "total_rebotes"]]
 
-    print("Tabela de Desempenho dos Brooklyn Nets (Totais) - Temporadas 2023-24 e 2024-25:")
-    print(tabela_final)
     # -------------------------------------------------------------------------
 
     # -------------------------------------------------------------------------
@@ -65,8 +63,6 @@ def rf_graficos_desempenho_brooklyn_nets(
     tabela_media["Local"] = tabela_media["HOME_GAME"].map({True: "Casa", False: "Fora"})
     tabela_media = tabela_media[["SEASON", "Local", "media_pontos_marcados", "media_pontos_sofridos", "media_rebotes"]]
 
-    print("Tabela de Médias (Pontos, Pontos Sofridos e Rebotes) - Temporadas 2023-24 e 2024-25:")
-    print(tabela_media)
     # -------------------------------------------------------------------------
 
     # 1. Gráfico de Barras Empilhado (utilizando dados totais)

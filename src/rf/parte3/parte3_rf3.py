@@ -56,9 +56,6 @@ def analisar_regressao_linear():
         for col in ['MIN', 'FGA', 'TOV', 'PTS', 'AST', 'REB']:
             df[col] = pd.to_numeric(df[col], errors='coerce')
 
-        print("Dados filtrados (exibindo as 5 primeiras linhas):")
-        print(df[['PLAYER_ID', 'PLAYER_NAME', 'MIN', 'FGA', 'TOV', 'PTS', 'AST', 'REB']].head())
-
         # Processa cada variável dependente (target)
         for target in targets:
             print(f"\nProcessando o target: {target} para a temporada {season}")

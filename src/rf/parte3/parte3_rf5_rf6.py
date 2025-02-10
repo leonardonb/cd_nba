@@ -6,7 +6,7 @@ import seaborn as sns
 
 from nba_api.stats.endpoints import leaguedashplayerstats
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, auc, confusion_matrix, classification_report, roc_curve, roc_auc_score
+from sklearn.metrics import auc, confusion_matrix, roc_curve
 from sklearn.model_selection import train_test_split
 
 def analisar_regressao_logistica_graficos():
