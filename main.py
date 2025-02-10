@@ -20,7 +20,8 @@ from src.rf.parte3.parte3_rf1 import aplicar_metodo_gumbel
 from src.rf.parte3.parte3_rf2 import visualizando_metodo_gumbel
 from src.rf.parte3.parte3_rf3 import analisar_regressao_linear
 from src.rf.parte3.parte3_rf4 import graficos_regressao_linear
-from src.rf.parte3.parte3_rf5_rf6 import analisar_regressao_logistica_graficos
+from src.rf.parte3.parte3_rf7 import gamlss_brooklyn_nets
+from src.rf.parte3.parte3_rf8 import graficos_gamglss_nets
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -253,11 +254,15 @@ analisar_regressao_linear()
 print("Executando RF4: Gerar gráficos de regressão linear...")
 graficos_regressao_linear()
 
-# Parte 3 RF5/RF6: Regressão Logística: variável alvo 
-# RF5 – Possível uso de variáveis independentes: tempo que o jogador passou em  quadra, arremessos tentados e turnovers. Variáveis dependentes, pontos,  assistências e rebotes. Divida os dados de teste e treinamento.  
-# RF6 – Apresente gráficos que facilitem a interpretação das previsões, como  matriz de confusão, gráficos de probabilidade predita, curva roc, gráficos de  coeficientes, etc.
-print("Executando Parte3 RF5-RF6: Analisar regressão lógistica e geração de seus gráficos...")
-analisar_regressao_logistica_graficos()
+# Parte 03 RF7: Preveja uma quantidade X através de GAMLSS
+print("Executando RF7: Fazendo previsão através de GAMLSS...")
+gamlss_brooklyn_nets()
 
+# Parte 03 RF8: Gráficos referentes a previsão através de GAMLSS
+print("Executando RF8: Fazendo gráficos de previsão através de GAMLSS...")
+graficos_gamglss_nets()
 
 print("Processamento concluído.")
+
+#Chamar Dashboard
+os.system("streamlit run dashboard.py")
