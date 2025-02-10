@@ -10,9 +10,9 @@ engine_image = os.getenv('ENGINE_IMAGE')
 def rf_graficos_desempenho_brooklyn_nets(
         team_id=1610612751,
         seasons=["2023-24", "2024-25"],
-        html_output_dir="reports/html/parte1",
-        csv_output_dir="reports/arquivos_csv/parte1",
-        img_output_dir="reports/imagens/parte1"
+        html_output_dir="reports/html/parte1/parte1-rf8",
+        csv_output_dir="reports/arquivos_csv/parte1/parte1-rf8",
+        img_output_dir="reports/imagens/parte1/parte1-rf8"
 ):
     os.makedirs(html_output_dir, exist_ok=True)
     os.makedirs(csv_output_dir, exist_ok=True)

@@ -268,6 +268,3 @@ print("Executando RF8: Fazendo gráficos de previsão através de GAMLSS...")
 graficos_gamglss_nets()
 
 print("Processamento concluído.")
-
-#Chamar Dashboard
-#os.system("streamlit run dashboard.py")
