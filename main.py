@@ -23,6 +23,7 @@ from src.rf.parte3.parte3_rf4 import graficos_regressao_linear
 from src.rf.parte3.parte3_rf5_rf6 import analisar_regressao_logistica_graficos
 from src.rf.parte3.parte3_rf7 import gamlss_brooklyn_nets
 from src.rf.parte3.parte3_rf8 import graficos_gamglss_nets
+from src.utils.copiar_pasta import copiar_pasta
 from src.data.limpeza_dados import tratar_dados_jogadores, adicionar_informacoes_placar
 from src.data.coleta_dados import coletar_dados_time
 
@@ -272,6 +273,18 @@ graficos_gamglss_nets()
 
 print("Processamento concluído.")
 
+#Copiar arquivos para dashboard
+if __name__ == "__main__":
+    # Lista de pares (origem, destino)
+    caminhos = [
+        ("reports/imagens/parte1/parte1-rf8", "src/visualizations/dashboard/parte1/assets"),
+        ("reports/imagens/parte2/parte2-rf10", "src/visualizations/dashboard/parte2/assets")
+    ]
+
+    # Executa a cópia para cada par
+    for origem, destino in caminhos:
+        copiar_pasta(origem, destino)
+
 #Abrir Dashboards
 if __name__ == "__main__":
     # Inicia os dois dashboards em portas diferentes
@@ -285,6 +298,6 @@ if __name__ == "__main__":
     webbrowser.open("http://127.0.0.1:8050")  # Abre Parte 1
     webbrowser.open("http://127.0.0.1:8051")  # Abre Parte 2
 
-    # Mantém os processos rodando
-    p1.wait()
-    p2.wait()
+    # Mata os processos corretamente
+    p1.terminate()
+    p2.terminate()
