@@ -61,9 +61,31 @@ pip install pandas matplotlib seaborn plotly numpy scipy mpld3 requests beautifu
 
 ---
 
+### Configuração do Arquivo `.env`
+
+Para garantir o funcionamento correto do projeto, siga as instruções abaixo para criar e configurar o arquivo `.env`:
+
+1. **Crie um arquivo `.env` na raiz do projeto**:
+   - Na raiz do seu projeto, crie um arquivo chamado `.env`.
+
+2. **Adicione a variável `ENGINE_IMAGE`**:
+   - Dentro do arquivo `.env`, adicione uma das seguintes linhas, dependendo da engine que você está utilizando:
+     ```plaintext
+     ENGINE_IMAGE="kaleido"
+     ```
+     ou
+     ```plaintext
+     ENGINE_IMAGE="orca"
+     ```
+
+   - Escolha `"kaleido"` ou `"orca"` com base na engine que você está usando para gerar visualizações.
+
+---
+
 ### Observações
 - Certifique-se de que todas as bibliotecas estão atualizadas para evitar conflitos de versão.
 - O projeto depende de uma conexão com a internet para acessar dados da NBA via `nba_api`.
+- Certifique-se de que o arquivo .env tenha sido criado corretamente.
 
 ---
 

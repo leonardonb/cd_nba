@@ -16,5 +16,9 @@
 /reports/html
 /reports/imagens
 
-# ignorar variaveis de ambiente
+# Ignorar variaveis de ambiente
 .env
+
+# Ignorar arquivos gerados nas pastas assets
+src/visualizations/dashboard/parte1/assets/*
+src/visualizations/dashboard/parte2/assets/*
