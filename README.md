@@ -6,7 +6,7 @@ Para executar este projeto, é necessário instalar as seguintes bibliotecas Pyt
 Você pode instalar todas as dependências de uma vez usando o seguinte comando:
 
 ```bash
-pip install pandas matplotlib seaborn plotly numpy scipy mpld3 requests beautifulsoup4 scikit-learn pygam nba_api pdfkit dash python-dotenv
+pip install pandas matplotlib seaborn plotly numpy scipy mpld3 requests beautifulsoup4 scikit-learn pygam nba_api pdfkit dash python-dotenv kaleido
 ```
 
 ---
@@ -23,6 +23,7 @@ pip install pandas matplotlib seaborn plotly numpy scipy mpld3 requests beautifu
 | **scipy**        | Funções matemáticas avançadas e estatísticas.                            |
 | **scikit-learn** | Ferramentas para machine learning, como regressão e classificação.       |
 | **pygam**        | Modelos aditivos generalizados (GAM) para análise estatística.           |
+| **kaleido**      | Renderização de gráficos Plotly em vários formatos de imagem.            |
 
 ---
 
@@ -80,7 +81,11 @@ Para garantir o funcionamento correto do projeto, siga as instruções abaixo pa
 
    - Escolha `"kaleido"` ou `"orca"` com base na engine que você está usando para gerar visualizações.
 
----
+### Por que usar o arquivo .env?
+
+Durante o desenvolvimento do código, identificamos um problema: em uma máquina de um membro da equipe, apenas a engine Kaleido funcionava corretamente, enquanto em outra máquina, apenas a engine Orca era compatível. Para resolver essa divergência, optamos por utilizar uma variável de ambiente configurada em um arquivo .env. Dessa forma, cada membro da equipe pode definir localmente qual engine utilizar, sem a necessidade de alterar o código-fonte. Como o arquivo .env contém configurações específicas para cada ambiente, ele não deve ser commitado no repositório do GitHub, sendo criado apenas localmente por quem for executar o programa.
+
+Os arquivos .env, em conjunto com a biblioteca python-dotenv, são uma solução eficiente e segura para gerenciar variáveis de ambiente, especialmente em projetos que envolvem múltiplos ambientes de desenvolvimento ou que exigem configurações personalizadas para cada máquina.
 
 ### Observações
 - Certifique-se de que todas as bibliotecas estão atualizadas para evitar conflitos de versão.
